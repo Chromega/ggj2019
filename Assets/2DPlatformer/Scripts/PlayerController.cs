@@ -8,6 +8,7 @@ public class PlayerController : PhysicsObject
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 3;
     public float horizontalSpeed = 0.8f;
+    public int health = 10;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -48,4 +49,19 @@ public class PlayerController : PhysicsObject
 
         targetVelocity = move * maxSpeed;
     }
+
+    void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("DEATH");
+    }
+
 }
