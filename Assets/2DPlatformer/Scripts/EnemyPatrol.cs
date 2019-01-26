@@ -3,6 +3,8 @@
 public class EnemyPatrol : Movable
 {
 
+    private float direction = -1.0f;
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -16,8 +18,12 @@ public class EnemyPatrol : Movable
 
     protected override float getHorizontalDirection()
     {
-        float randomDirection = Random.Range(0.0f, 1.0f);
-        Debug.Log(randomDirection);
-        return randomDirection;
+        float probability = Random.Range(0.0f, 1.0f);
+        if (probability > 0.97f)
+        {
+            direction *= -1;
+        }
+
+        return direction;
     }
 }

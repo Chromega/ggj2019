@@ -134,9 +134,9 @@ MonoBehaviour:
   gravityModifier: 1
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
-  maxSpeed: 7
+  maxSpeed: 2
   jumpTakeOffSpeed: 3
-  horizontalSpeed: 0.8
+  horizontalSpeed: 0.3
 --- !u!95 &218086365
 Animator:
   serializedVersion: 3
