@@ -88,11 +88,7 @@ public class Healthable : MonoBehaviour
         }
     }
 
-    void Die()
+    public virtual void Die()
     {
-        if (GetComponent<Monster>())
-        {
-            Destroy(gameObject);
-        } 
     }
 }

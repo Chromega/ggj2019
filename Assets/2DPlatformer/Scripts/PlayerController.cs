@@ -14,6 +14,7 @@ public class PlayerController : Movable
     bool isStill;
     private int direction = 1; // 1 = right, -1 = left
 
+    // Events
     public static System.Action onDied;
 
     // Use this for initialization
