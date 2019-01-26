@@ -4,7 +4,7 @@ public class PlayerController : Movable
 {
     public int queueOrder;
     public Collider2D collider2D;
-    public Weaponable weapon;
+    public Weaponable weaponPrefab;
 
     // Use this for initialization
     void Awake()
@@ -36,6 +36,17 @@ public class PlayerController : Movable
         if (queueOrder == 0)
             base.Update();
         UpdateAnimationProperties();
+
+        if (Input.GetButtonUp("Fire1"))
+        {
+            if (weaponPrefab is Bullet)
+            {
+                Vector3 weaponPosition = new Vector3(transform.position.x + 1, transform.position.y + 1, transform.position.z + 1);
+                Bullet weapon = (Bullet)Instantiate(weaponPrefab, weaponPosition, Quaternion.identity);
+                weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
+                weapon.velocity = new Vector3(1, 0, 0);
+            }
+        }
     }
 
     protected override void FixedUpdate()
