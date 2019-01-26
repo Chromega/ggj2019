@@ -11,6 +11,13 @@ public class PlayerChain : MonoBehaviour
 
     List<Vector3> positionHistory = new List<Vector3>();
 
+    public static PlayerChain Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

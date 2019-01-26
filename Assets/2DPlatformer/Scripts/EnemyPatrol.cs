@@ -2,8 +2,6 @@
 
 public class EnemyPatrol : Movable
 {
-
-    public PlayerController player; 
     public float visionRange = 5; 
     private float direction = -1.0f;
 
@@ -29,7 +27,7 @@ public class EnemyPatrol : Movable
         }
 
         // If you see the player, walk toward the player
-        Vector2 playerPosition = player.transform.position;
+        Vector2 playerPosition = PlayerChain.Instance.transform.position;
         Vector2 position = this.transform.position;
 
         if (Mathf.Abs(playerPosition.x - position.x) < visionRange)
