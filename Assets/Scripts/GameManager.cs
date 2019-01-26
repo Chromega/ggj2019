@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     {
         // unsubscribe from events
         PlayerController.onDied -= PlayerController_OnDied;
+        HealthableMonster.onDied -= HealthableMonster_OnDied;
     }
 
     private void Awake()
