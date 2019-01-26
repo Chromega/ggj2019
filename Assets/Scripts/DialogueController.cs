@@ -28,11 +28,11 @@ public class DialogueController : MonoBehaviour
         group.alpha = Mathf.MoveTowards(group.alpha, targetFade, 2f * Time.deltaTime);
     }
 
-    public void ShowText(string text)
+    public void ShowText(string text, float timeToDisplay = 2f)
     {
         dialogueText.text = text;
         targetFade = 1f;
-        StartCoroutine(HideTextCoroutine(2f));
+        StartCoroutine(HideTextCoroutine(timeToDisplay));
     }
 
     IEnumerator HideTextCoroutine(float delay)

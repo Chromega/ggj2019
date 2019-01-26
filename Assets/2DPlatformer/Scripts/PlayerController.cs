@@ -13,7 +13,7 @@ public class PlayerController : Movable
     float settleAmount;
     bool isStill;
     private int direction = 1; // 1 = right, -1 = left
-
+    
     public enum State
     {
         Active,
@@ -21,6 +21,7 @@ public class PlayerController : Movable
         Chillin
     }
     State state;
+    public static System.Action onDied;
 
     // Use this for initialization
     void Awake()
@@ -74,7 +75,17 @@ public class PlayerController : Movable
         }
 
         UpdateAnimationProperties();
-
+        
+        // check if died
+        Healthable healthable = GetComponent<Healthable>();
+        if (healthable.health <= 0)
+        {
+            if (onDied != null)
+            {
+                onDied();
+            }
+        }
+        
         if (state == State.Active && Input.GetButtonUp("Fire1") && weaponPrefab)
         {
             int weaponDirection = spriteRenderer.flipX ? -1 : 1;
