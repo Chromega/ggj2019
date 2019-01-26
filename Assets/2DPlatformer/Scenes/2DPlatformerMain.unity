@@ -134,10 +134,17 @@ MonoBehaviour:
   gravityModifier: 1
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
+  collider2D: {fileID: 218086363}
   maxSpeed: 2
   jumpTakeOffSpeed: 3
   horizontalSpeed: 0.3
   visionRange: 5
+--- !u!61 &218086363 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 61781244883272318, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 1077239811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &218086365
 Animator:
   serializedVersion: 3
@@ -210,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575914119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6443832, y: -7.7768598, z: 1}
+  m_LocalPosition: {x: -9.509373, y: 3.8957043, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -349,6 +356,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1109546692411712594, guid: 2625fd8da140e469eb5eacd84f0923db,
         type: 3}
+    - target: {fileID: 2441110777510907452, guid: e7fcecc826687024e9b52ec763b14088,
+        type: 3}
+      propertyPath: debug
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7fcecc826687024e9b52ec763b14088, type: 3}
 --- !u!1 &953545107 stripped
@@ -3225,7 +3237,7 @@ PrefabInstance:
     - target: {fileID: 20134372339604138, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 3}
       propertyPath: orthographic size
-      value: 3.84375
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f387d2a5577afa47b4f87e4e846f091, type: 3}

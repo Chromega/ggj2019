@@ -32,12 +32,20 @@ public class EnemyPatrol : Movable
 
         if (Mathf.Abs(playerPosition.x - position.x) < visionRange)
         {
-            Debug.Log("I SEE YOU");
             direction = (playerPosition.x - position.x) / (Mathf.Abs(playerPosition.x - position.x));
         }
 
+        bool leftGround;
+        bool rightGround;
+        PhysicsUtl.LedgeCheck(collider2D, out leftGround, out rightGround);
 
 
-        return direction;
+        float directionToReturn = direction;
+        if (direction < 0 && !leftGround)
+            directionToReturn = 0;
+        else if (direction > 0 && !rightGround)
+            directionToReturn = 0;
+
+        return directionToReturn;
     }
 }

@@ -5,6 +5,7 @@ public abstract class Movable : PhysicsObject
 {
     public SpriteRenderer spriteRenderer;
     public Animator animator;
+    new public Collider2D collider2D;
 
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 3;

@@ -3,7 +3,6 @@
 public class PlayerController : Movable
 {
     public int queueOrder;
-    public Collider2D collider2D;
     public Weaponable weaponPrefab;
 
     // Use this for initialization
