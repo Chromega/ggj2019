@@ -7,7 +7,7 @@ using UnityEditor;
 [RequireComponent(typeof(Camera))]
 public class DeadzoneCamera : MonoBehaviour 
 {
-    public Renderer target;
+    public Transform target;
     public Rect deadzone;
     public Vector3 smoothPos;
 
