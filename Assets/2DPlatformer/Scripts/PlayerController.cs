@@ -20,7 +20,9 @@ public class PlayerController : Movable
         Following,
         Chillin
     }
-    State state;
+    State state = State.Chillin;
+
+    // Events
     public static System.Action onDied;
 
     // Use this for initialization
@@ -105,7 +107,7 @@ public class PlayerController : Movable
             Vector3 newPos;
             if (settleAmount > 0.01f)
             {
-                Vector3 settleLerpPos = Vector3.MoveTowards(transform.position, settlePosition, 3f * Time.deltaTime);
+                Vector3 settleLerpPos = Vector3.MoveTowards(transform.position, settlePosition, 6f * Time.deltaTime);
                 Vector3 pos = Vector3.Lerp(exactPathPosition, settleLerpPos, settleAmount);
                 pos.y = exactPathPosition.y;
                 newPos = pos;
@@ -179,7 +181,7 @@ public class PlayerController : Movable
         //transform.position = pos;
         //velocity = posDiff / Time.deltaTime;
 
-        settlePosition = pos - .4f * queueOrder * Vector3.right * parentFlipSign;
+        settlePosition = pos - 1.2f * queueOrder * Vector3.right * parentFlipSign;
         lastExactPathPosition = exactPathPosition;
         exactPathPosition = pos;
 
@@ -202,5 +204,16 @@ public class PlayerController : Movable
     public void updateFundsLeft(int hp)
     {
         fundsLeftText.text = "Funds Left: $" + hp.ToString();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (state != State.Chillin)
+            return;
+
+        if (collision.collider.gameObject.layer == (int)PhysicsUtl.LayerMasks.Player)
+        {
+            PlayerChain.Instance.AddToChain(this);
+        }
     }
 }

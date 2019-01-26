@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerChain : MonoBehaviour
 {
-    public PlayerController[] players;
+    public List<PlayerController> players;
     
     PlayerController currentControlled;
     int currentControlledIdx;
@@ -29,7 +29,7 @@ public class PlayerChain : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            SetPlayerIndex((currentControlledIdx + 1) % players.Length);
+            SetPlayerIndex((currentControlledIdx + 1) % players.Count);
         }
 
         positionHistory.Add(currentControlled.transform.position);
@@ -39,9 +39,9 @@ public class PlayerChain : MonoBehaviour
             positionHistory = positionHistory.GetRange(1, kHistoryLength);
         }
 
-        for (int queueIdx = 1; queueIdx < players.Length; ++queueIdx)
+        for (int queueIdx = 1; queueIdx < players.Count; ++queueIdx)
         {
-            int playerIdx = (currentControlledIdx + queueIdx) % players.Length;
+            int playerIdx = (currentControlledIdx + queueIdx) % players.Count;
             players[playerIdx].SetPosition(GetHistory(queueIdx * 15), currentControlled.spriteRenderer.flipX?-1:1);
         }
 
@@ -56,9 +56,9 @@ public class PlayerChain : MonoBehaviour
 
     void SetPlayerIndex(int playerIndex)
     {
-        for (int i = 0; i < players.Length; ++i)
+        for (int i = 0; i < players.Count; ++i)
         {
-            int queueIndex = (i - playerIndex + players.Length) % players.Length;
+            int queueIndex = (i - playerIndex + players.Count) % players.Count;
 
             if (queueIndex == 0)
             {
@@ -86,5 +86,12 @@ public class PlayerChain : MonoBehaviour
     void DeactivatePlayer(int idx)
     {
         players[idx].Deactivate();
+    }
+
+    public void AddToChain(PlayerController controller)
+    {
+        players.Add(controller);
+        controller.SetQueueOrder(players.Count - 1);
+        controller.Deactivate();
     }
 }

@@ -8,23 +8,34 @@ public class GameManager : MonoBehaviour
     public Canvas dialogueCanvas;
     public string startText = "The story of a founder building the Uber for Crypto";
     public string loseText = "You ran out of money. Start a new company?";
-    private bool isAlive = true;
+    public string winText = "You IPO'd! Start a new company?";
+    private bool isActive = true;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        // subscribe to events
         PlayerController.onDied += PlayerController_OnDied;
+        HealthableMonster.onDied += HealthableMonster_OnDied;
     }
+
+    void HealthableMonster_OnDied()
+    {
+        dialogueCanvas.GetComponent<DialogueController>().ShowText(winText, 999.0f);
+        isActive = false;
+    }
+
 
     void PlayerController_OnDied()
     {
         dialogueCanvas.GetComponent<DialogueController>().ShowText(loseText, 999.0f);
-        isAlive = false;
+        isActive = false;
     }
 
     private void OnDestroy()
     {
+        // unsubscribe from events
         PlayerController.onDied -= PlayerController_OnDied;
     }
 
@@ -46,7 +57,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isAlive)
+        if (!isActive)
         {
             if (Input.GetButtonUp("Submit"))
             {
