@@ -6,11 +6,45 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public Canvas dialogueCanvas;
-    public string startText = "The story of a founder building the Uber for Crypto";
+    string startText = "The story of a founder building the {0} for {1}";
     public string loseText = "You ran out of money. Start a new company?";
     public string winText = "You IPO'd! Start a new company?";
     private bool isActive = true;
 
+    string[] companies =
+    {
+        "Uber",
+        "AirBnB",
+        "Facebook",
+        "Twitter",
+        "Tesla",
+        "Spotify",
+        "Pandora",
+        "Apple",
+        "Google",
+        "Amazon",
+        "Rover",
+        "Lyft",
+        "Waze",
+        "Tumblr",
+        "Reddit",
+        "Salesforce"
+    };
+
+    string[] industries =
+    {
+        "horticulture",
+        "katanas",
+        "burritos",
+        "birdwatching",
+        "interior decorating",
+        "stamp collecting",
+        "citrus",
+        "socks",
+        "narcotics",
+        "stretch marks",
+        "toe hair"
+    };
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +86,9 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Please attach a canvas with a DialogueController object");
         }
 
-        dialogueCanvas.GetComponent<DialogueController>().ShowText(startText, 6.0f);
+        string company = companies[Random.Range(0, companies.Length)];
+        string industry = industries[Random.Range(0, industries.Length)];
+        dialogueCanvas.GetComponent<DialogueController>().ShowText(string.Format(startText, company, industry), 6.0f);
     }
 
     // Update is called once per frame

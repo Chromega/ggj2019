@@ -8,6 +8,7 @@ public class DialogueController : MonoBehaviour
     public CanvasGroup group;
     public Text dialogueText;
     float targetFade = 0;
+    uint currentDialogueId;
 
     public static DialogueController Instance { get; private set; }
 
@@ -28,11 +29,21 @@ public class DialogueController : MonoBehaviour
         group.alpha = Mathf.MoveTowards(group.alpha, targetFade, 2f * Time.deltaTime);
     }
 
-    public void ShowText(string text, float timeToDisplay = 2f)
+    public uint ShowText(string text, float timeToDisplay = 2f)
     {
         dialogueText.text = text;
         targetFade = 1f;
-        StartCoroutine(HideTextCoroutine(timeToDisplay));
+        ++currentDialogueId;
+        //If 0 or lower, dont fade automatically
+        if (timeToDisplay > 0)
+            StartCoroutine(HideTextCoroutine(timeToDisplay));
+        return currentDialogueId;
+    }
+
+    public void HideText(uint handle, float delay)
+    {
+        if (currentDialogueId == handle)
+            StartCoroutine(HideTextCoroutine(delay));
     }
 
     IEnumerator HideTextCoroutine(float delay)
