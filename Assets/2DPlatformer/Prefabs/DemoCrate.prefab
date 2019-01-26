@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 61781244883272318}
   - component: {fileID: 50214110263617082}
   - component: {fileID: 6101503671053232220}
+  - component: {fileID: 5075586664207596226}
   m_Layer: 0
   m_Name: DemoCrate
   m_TagString: Untagged
@@ -142,3 +143,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+--- !u!114 &5075586664207596226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222806087177142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1479c9e20c14d13869fb6a5f8d9562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minGroundNormalY: 0.65
+  gravityModifier: 1
+  spriteRenderer: {fileID: 0}
+  animator: {fileID: 0}
+  collider2D: {fileID: 61781244883272318}
+  maxSpeed: 2
+  jumpTakeOffSpeed: 3
+  horizontalSpeed: 0.3
+  recoilTakeoffSpeed: 0.8
+  visionRange: 5

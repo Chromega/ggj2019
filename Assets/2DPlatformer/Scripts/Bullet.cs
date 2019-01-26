@@ -19,4 +19,9 @@ public class Bullet : Weaponable
     {
         rb.velocity = velocity * direction;
     }
+
+    protected override void finishCollision()
+    {
+        Destroy(gameObject);
+    }
 }

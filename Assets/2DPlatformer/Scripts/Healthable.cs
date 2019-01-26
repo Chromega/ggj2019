@@ -8,11 +8,13 @@ public class Healthable : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private Movable movable; 
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        movable = GetComponent<Movable>();
     }
 
     // Update is called once per frame
@@ -24,12 +26,13 @@ public class Healthable : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, GameObject g)
     {
         health -= damage;
 
         // Flash red on the sprite for damage taken
         StartCoroutine("FlashDamageAnimation");
+        movable.Recoil((transform.position - g.transform.position).normalized); 
     }
 
     IEnumerator FlashDamageAnimation()
@@ -41,13 +44,11 @@ public class Healthable : MonoBehaviour
             {
                 spriteRenderer.color = new Color(1f, 0f, 0f, 1f);
                 red = true;
-                Debug.Log("switching to red");
             }
             else
             {
                 spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
                 red = false; 
-                Debug.Log("switching to white");
             }
             yield return new WaitForSeconds(.05f);
         }
@@ -55,7 +56,9 @@ public class Healthable : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("DEATH");
-        Destroy(gameObject); 
+        if (GetComponent<Monster>())
+        {
+            Destroy(gameObject);
+        } 
     }
 }

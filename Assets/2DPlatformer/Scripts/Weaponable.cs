@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weaponable : MonoBehaviour
+public abstract class Weaponable : MonoBehaviour
 {
     public int damageToDeal = 1;
 
@@ -18,13 +18,28 @@ public class Weaponable : MonoBehaviour
         
     }
 
+    protected abstract void finishCollision();
+
     void OnTriggerEnter2D(Collider2D col)
     {
         Healthable healthable = col.gameObject.GetComponent<Healthable>();
         if (healthable)
         {
-            healthable.TakeDamage(damageToDeal);
+            healthable.TakeDamage(damageToDeal, gameObject);
+            finishCollision(); 
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Healthable healthable = col.gameObject.GetComponent<Healthable>();
+        if (healthable)
+        {
+            healthable.TakeDamage(damageToDeal, gameObject);
+            finishCollision();
+        }
+
     }
 }

@@ -12,6 +12,10 @@ public class Sword : Weaponable
         
     }
 
+    protected override void finishCollision()
+    { }
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
