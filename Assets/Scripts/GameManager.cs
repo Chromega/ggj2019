@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public string startText = "The story of a founder building the Uber for Crypto";
     public string loseTextNoMoney = "You ran out of money. Start a new company?";
     public string loseTextNoPlayers = "Everyone quit. Start a new company?";
+    public string memberLostText = "Team member burned out";
     public string winText = "You IPO'd! Start a new company?";
     public Text fundsLeftText;
 
@@ -22,7 +23,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // subscribe to events
-        PlayerChain.allDied += PlayerChain_AllDied;
         PlayerChain.memberLost += PlayerChain_MemberLost;
         HealthableMonster.onDied += HealthableMonster_OnDied;
 
@@ -36,28 +36,30 @@ public class GameManager : MonoBehaviour
 
         if (funds <= 0)
         {
-            dialogueCanvas.GetComponent<DialogueController>().ShowText(loseTextNoMoney, 999.0f);
+            updateDialogueText(loseTextNoMoney, 999.0f);
             isActive = false;
+        }
+        else if (PlayerChain.Instance.players.Count <= 0)
+        {
+            updateDialogueText(loseTextNoPlayers, 999.0f);
+            isActive = false;
+        }
+        else
+        {
+            updateDialogueText(memberLostText);
         }
     }
 
 
     void HealthableMonster_OnDied()
     {
-        dialogueCanvas.GetComponent<DialogueController>().ShowText(winText, 999.0f);
-        isActive = false;
-    }
-
-    void PlayerChain_AllDied()
-    {
-        dialogueCanvas.GetComponent<DialogueController>().ShowText(loseTextNoPlayers, 999.0f);
+        updateDialogueText(winText, 999.0f);
         isActive = false;
     }
 
     private void OnDestroy()
     {
         // unsubscribe from events
-        PlayerChain.allDied -= PlayerChain_AllDied;
         PlayerChain.memberLost -= PlayerChain_MemberLost;
         HealthableMonster.onDied -= HealthableMonster_OnDied;
     }
@@ -74,7 +76,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Please attach a canvas with a DialogueController object");
         }
 
-        dialogueCanvas.GetComponent<DialogueController>().ShowText(startText, 6.0f);
+        updateDialogueText(startText, 6.0f);
     }
 
     // Update is called once per frame
@@ -92,5 +94,14 @@ public class GameManager : MonoBehaviour
     public void updateFundsLeft(int hp)
     {
         fundsLeftText.text = "Funds Left: $" + funds.ToString();
+    }
+
+    void updateDialogueText(string text, float timeToDisplay = -1)
+    {
+        if (timeToDisplay > -1)
+        {
+            dialogueCanvas.GetComponent<DialogueController>().ShowText(text, timeToDisplay);
+        }
+        else dialogueCanvas.GetComponent<DialogueController>().ShowText(text);
     }
 }
