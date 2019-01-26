@@ -8,12 +8,47 @@ public class GameManager : MonoBehaviour
 {
     // strings
     public Canvas dialogueCanvas;
-    public string startText = "The story of a founder building the Uber for Crypto";
+    string startText = "The story of a founder building the {0} for {1}";
     public string loseTextNoMoney = "You ran out of money. Start a new company?";
     public string loseTextNoPlayers = "Everyone quit. Start a new company?";
     public string memberLostText = "Team member burned out";
     public string winText = "You IPO'd! Start a new company?";
     public Text fundsLeftText;
+    
+    string[] companies =
+    {
+        "Uber",
+        "AirBnB",
+        "Facebook",
+        "Twitter",
+        "Tesla",
+        "Spotify",
+        "Pandora",
+        "Apple",
+        "Google",
+        "Amazon",
+        "Rover",
+        "Lyft",
+        "Waze",
+        "Tumblr",
+        "Reddit",
+        "Salesforce"
+    };
+
+    string[] industries =
+    {
+        "horticulture",
+        "katanas",
+        "burritos",
+        "birdwatching",
+        "interior decorating",
+        "stamp collecting",
+        "citrus",
+        "socks",
+        "narcotics",
+        "stretch marks",
+        "toe hair"
+    };
 
     // state
     private bool isActive = true;
@@ -76,7 +111,9 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Please attach a canvas with a DialogueController object");
         }
 
-        updateDialogueText(startText, 6.0f);
+        string company = companies[Random.Range(0, companies.Length)];
+        string industry = industries[Random.Range(0, industries.Length)];
+        dialogueCanvas.GetComponent<DialogueController>().ShowText(string.Format(startText, company, industry), 6.0f);
     }
 
     // Update is called once per frame
