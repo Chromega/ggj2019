@@ -13,6 +13,14 @@ public class PlayerController : Movable
     float settleAmount;
     bool isStill;
     private int direction = 1; // 1 = right, -1 = left
+    
+    public enum State
+    {
+        Active,
+        Following,
+        Chillin
+    }
+    State state = State.Chillin;
 
     // Events
     public static System.Action onDied;
@@ -20,8 +28,10 @@ public class PlayerController : Movable
     // Use this for initialization
     void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        if (!spriteRenderer)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        if (!animator)
+            animator = GetComponent<Animator>();
 
         Healthable healthable = GetComponent<Healthable>();
     }
@@ -47,7 +57,7 @@ public class PlayerController : Movable
 
     protected override void ComputeVelocity()
     {
-        if (queueOrder == 0)
+        if (state == State.Active)
             base.ComputeVelocity();
         else
             targetVelocity = velocity;
@@ -61,13 +71,13 @@ public class PlayerController : Movable
 
     protected override void Update()
     {
-        if (queueOrder == 0)
+        if (state == State.Active)
         {
             base.Update();
         }
 
         UpdateAnimationProperties();
-
+        
         // check if died
         Healthable healthable = GetComponent<Healthable>();
         if (healthable.health <= 0)
@@ -77,8 +87,8 @@ public class PlayerController : Movable
                 onDied();
             }
         }
-
-        if (queueOrder == 0 && Input.GetButtonUp("Fire1") && weaponPrefab)
+        
+        if (state == State.Active && Input.GetButtonUp("Fire1") && weaponPrefab)
         {
             int weaponDirection = spriteRenderer.flipX ? -1 : 1;
             Vector3 weaponPosition = new Vector3(transform.position.x + weaponDirection * 0.5f, transform.position.y + 0.5f, transform.position.z);
@@ -92,12 +102,12 @@ public class PlayerController : Movable
             }
         }
 
-        if (queueOrder != 0)
+        if (state == State.Following)
         {
             Vector3 newPos;
             if (settleAmount > 0.01f)
             {
-                Vector3 settleLerpPos = Vector3.MoveTowards(transform.position, settlePosition, 3f * Time.deltaTime);
+                Vector3 settleLerpPos = Vector3.MoveTowards(transform.position, settlePosition, 6f * Time.deltaTime);
                 Vector3 pos = Vector3.Lerp(exactPathPosition, settleLerpPos, settleAmount);
                 pos.y = exactPathPosition.y;
                 newPos = pos;
@@ -135,7 +145,7 @@ public class PlayerController : Movable
 
     protected override void FixedUpdate()
     {
-        if (queueOrder == 0)
+        if (state == State.Active)
             base.FixedUpdate();
         else
             grounded = true;
@@ -156,11 +166,13 @@ public class PlayerController : Movable
     public void Activate()
     {
         collider2D.enabled = true;
+        state = State.Active;
     }
 
     public void Deactivate()
     {
         collider2D.enabled = false;
+        state = State.Following;
     }
 
     public void SetPosition(Vector3 pos, float parentFlipSign)
@@ -169,7 +181,7 @@ public class PlayerController : Movable
         //transform.position = pos;
         //velocity = posDiff / Time.deltaTime;
 
-        settlePosition = pos - .4f * queueOrder * Vector3.right * parentFlipSign;
+        settlePosition = pos - 1.2f * queueOrder * Vector3.right * parentFlipSign;
         lastExactPathPosition = exactPathPosition;
         exactPathPosition = pos;
 
@@ -192,5 +204,16 @@ public class PlayerController : Movable
     public void updateFundsLeft(int hp)
     {
         fundsLeftText.text = "Funds Left: $" + hp.ToString();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (state != State.Chillin)
+            return;
+
+        if (collision.collider.gameObject.layer == (int)PhysicsUtl.LayerMasks.Player)
+        {
+            PlayerChain.Instance.AddToChain(this);
+        }
     }
 }

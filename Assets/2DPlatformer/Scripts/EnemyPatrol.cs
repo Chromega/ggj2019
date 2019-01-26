@@ -8,8 +8,10 @@ public class EnemyPatrol : Movable
 
     void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        if (!spriteRenderer)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        if (!animator)
+            animator = GetComponent<Animator>();
     }
 
     protected override bool getJump()
