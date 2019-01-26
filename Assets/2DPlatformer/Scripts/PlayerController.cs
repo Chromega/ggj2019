@@ -2,6 +2,8 @@
 
 public class PlayerController : Movable
 {
+    public Weaponable weapon;
+
     // Use this for initialization
     void Awake()
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Weaponable
 {
     public Vector3 velocity;
     private Rigidbody2D rb;
@@ -17,15 +17,5 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         rb.velocity = velocity;
-    }
-
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        Healthable healthable = col.gameObject.GetComponent<Healthable>();
-        if (healthable)
-        {
-            healthable.TakeDamage(1);
-        }
-        Destroy(gameObject);
     }
 }
