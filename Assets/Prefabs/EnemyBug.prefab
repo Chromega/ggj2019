@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 61781244883272318}
   - component: {fileID: 50214110263617082}
   - component: {fileID: 5075586664207596226}
-  - component: {fileID: 8137812481172793296}
+  - component: {fileID: 218086365}
+  - component: {fileID: 218086367}
+  - component: {fileID: 4867637423041227569}
   m_Layer: 0
   m_Name: DemoCrate
   m_TagString: Untagged
@@ -72,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -888973317
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300006, guid: 545e3f6ad65c48d40a96534d4c3ecd84, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b13370f44fc5e3c408bed6bc857fe486, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,18 +98,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.14, y: -0.14}
+  m_Offset: {x: 0, y: 0.53}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.7}
+  m_Size: {x: 1.74, y: 1.06}
   m_EdgeRadius: 0
 --- !u!50 &50214110263617082
 Rigidbody2D:
@@ -147,12 +149,31 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
   collider2D: {fileID: 61781244883272318}
-  maxSpeed: 2
+  maxSpeed: 4
   jumpTakeOffSpeed: 3
-  horizontalSpeed: 0.3
+  horizontalSpeed: 0.6
   recoilTakeoffSpeed: 0.8
-  visionRange: 5
---- !u!114 &8137812481172793296
+  visionRange: 10
+--- !u!95 &218086365
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222806087177142}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &218086367
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,7 +182,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1222806087177142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e08c29b1b2834cb98acbb68d6693202, type: 3}
+  m_Script: {fileID: 11500000, guid: 613ab2a2761e149e2bf580c9612fa756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageToDeal: 2
+--- !u!114 &4867637423041227569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222806087177142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a209c8fcd2494f3cba503e7d0f5e974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  spriteRenderer: {fileID: 0}
