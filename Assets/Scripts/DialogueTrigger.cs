@@ -6,11 +6,12 @@ public class DialogueTrigger : MonoBehaviour
 {
     public string text;
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (DialogueController.Instance)
         {
-            DialogueController.Instance.ShowText(text);
+            if (other.gameObject.layer == (int)PhysicsUtl.LayerMasks.Player)
+                DialogueController.Instance.ShowText(text);
         }
         else
         {
