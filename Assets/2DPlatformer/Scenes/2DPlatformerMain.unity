@@ -112,6 +112,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &141608452 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4700705965652782195, guid: e90d9d7b554d2994dad311d581b01c0a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4700705965517564535}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &218086359 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1222806087177142, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee,
@@ -205,6 +217,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1019450215, guid: 1c65063ddbd25e149b4cabeabb316aca, type: 3}
+      propertyPath: fundsLeftText
+      value: 
+      objectReference: {fileID: 141608452}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c65063ddbd25e149b4cabeabb316aca, type: 3}
 --- !u!114 &349079415 stripped
@@ -321,6 +337,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 326667753, guid: bd192ed6d1a030e42aa4d8106a3f80d4, type: 3}
+      propertyPath: fundsLeftText
+      value: 
+      objectReference: {fileID: 141608452}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd192ed6d1a030e42aa4d8106a3f80d4, type: 3}
 --- !u!114 &606035720 stripped
@@ -468,6 +488,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1457097403, guid: 7ec4407ca4506f7489e44eaf4f07c87e, type: 3}
+      propertyPath: fundsLeftText
+      value: 
+      objectReference: {fileID: 141608452}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ec4407ca4506f7489e44eaf4f07c87e, type: 3}
 --- !u!114 &1055533163 stripped
