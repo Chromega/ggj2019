@@ -14,7 +14,6 @@ public class PlayerChain : MonoBehaviour
     public static PlayerChain Instance { get; private set; }
 
     // Events
-    public static System.Action allDied;
     public static System.Action memberLost;
 
     private void Awake()
@@ -109,7 +108,6 @@ public class PlayerChain : MonoBehaviour
         if (players.Count == 0)
         {
             currentControlled = null;
-            if (allDied != null) allDied();
         }
 
         if (memberLost != null) memberLost();
