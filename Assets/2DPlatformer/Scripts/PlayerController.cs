@@ -41,10 +41,12 @@ public class PlayerController : Movable
         {
             if (weaponPrefab is Bullet)
             {
-                Vector3 weaponPosition = new Vector3(transform.position.x + 1, transform.position.y + 1, transform.position.z + 1);
+                int bulletDirection = spriteRenderer.flipX ? -1 : 1;
+ 
+                Vector3 weaponPosition = new Vector3(transform.position.x + bulletDirection, transform.position.y + 1, transform.position.z + 1);
                 Bullet weapon = (Bullet)Instantiate(weaponPrefab, weaponPosition, Quaternion.identity);
                 weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
-                weapon.velocity = new Vector3(1, 0, 0);
+                weapon.velocity = new Vector3(bulletDirection, 0, 0);
             }
         }
     }
