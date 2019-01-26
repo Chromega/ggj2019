@@ -14,6 +14,8 @@ public class PlayerController : Movable
     bool isStill;
     private int direction = 1; // 1 = right, -1 = left
 
+    public static System.Action onDied;
+
     // Use this for initialization
     void Awake()
     {
@@ -64,6 +66,16 @@ public class PlayerController : Movable
         }
 
         UpdateAnimationProperties();
+
+        // check if died
+        Healthable healthable = GetComponent<Healthable>();
+        if (healthable.health <= 0)
+        {
+            if (onDied != null)
+            {
+                onDied();
+            }
+        }
 
         if (queueOrder == 0 && Input.GetButtonUp("Fire1") && weaponPrefab)
         {
