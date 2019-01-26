@@ -39,14 +39,19 @@ public class PlayerController : Movable
 
         if (Input.GetButtonUp("Fire1"))
         {
+            int weaponDirection = spriteRenderer.flipX ? -1 : 1;
+            Vector3 weaponPosition = new Vector3(transform.position.x + weaponDirection * 0.5f, transform.position.y + 0.5f, transform.position.z);
+
             if (weaponPrefab is Bullet)
             {
-                int bulletDirection = spriteRenderer.flipX ? -1 : 1;
- 
-                Vector3 weaponPosition = new Vector3(transform.position.x + bulletDirection, transform.position.y + 1, transform.position.z + 1);
                 Bullet weapon = (Bullet)Instantiate(weaponPrefab, weaponPosition, Quaternion.identity);
                 weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
-                weapon.velocity = new Vector3(bulletDirection, 0, 0);
+                weapon.velocity = new Vector3(weaponDirection, 0, 0);
+            }
+            else if (weaponPrefab is Sword)
+            {
+                Sword weapon = (Sword)Instantiate(weaponPrefab, weaponPosition, Quaternion.identity);
+                weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
             }
         }
     }
