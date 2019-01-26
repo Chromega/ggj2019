@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthableMonster : Healthable
+public class HealthableHipo : Healthable
 {
     // Events
     public static System.Action onDied;
