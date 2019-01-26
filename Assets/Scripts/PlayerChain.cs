@@ -64,7 +64,9 @@ public class PlayerChain : MonoBehaviour
             {
                 //When you swap, jump player to front
                 if (currentControlled)
-                    players[i].SetPosition(currentControlled.transform.position);
+                {
+                    players[i].CopyFromOther(currentControlled);
+                }
                 ActivatePlayer(i);
             }
             else

@@ -80,4 +80,11 @@ public class PlayerController : Movable
         transform.position = pos;
         velocity = posDiff / Time.deltaTime;
     }
+
+    public void CopyFromOther(PlayerController controller)
+    {
+        transform.position = controller.transform.position;
+        velocity = controller.velocity;
+        targetVelocity = controller.targetVelocity;
+    }
 }
