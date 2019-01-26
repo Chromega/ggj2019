@@ -59,15 +59,15 @@ public class GameManager : MonoBehaviour
     {
         // subscribe to events
         PlayerChain.memberLost += PlayerChain_MemberLost;
-        HealthableMonster.onDied += HealthableMonster_OnDied;
+        HealthableHipo.onDied += HealthableHipo_OnDied;
 
-        updateFundsLeft(funds);
+        updateFundsLeft();
     }
 
     void PlayerChain_MemberLost()
     {
         funds -= 3;
-        updateFundsLeft(funds);
+        updateFundsLeft();
 
         if (funds <= 0)
         {
@@ -86,8 +86,10 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void HealthableMonster_OnDied()
+    void HealthableHipo_OnDied()
     {
+        funds += 999999;
+        updateFundsLeft();
         updateDialogueText(winText, 999.0f);
         isActive = false;
     }
@@ -96,7 +98,7 @@ public class GameManager : MonoBehaviour
     {
         // unsubscribe from events
         PlayerChain.memberLost -= PlayerChain_MemberLost;
-        HealthableMonster.onDied -= HealthableMonster_OnDied;
+        HealthableHipo.onDied -= HealthableHipo_OnDied;
     }
 
     private void Awake()
@@ -128,7 +130,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void updateFundsLeft(int hp)
+    public void updateFundsLeft()
     {
         fundsLeftText.text = "Funds Left: $" + funds.ToString();
     }

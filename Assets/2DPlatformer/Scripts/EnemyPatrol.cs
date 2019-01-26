@@ -19,6 +19,12 @@ public class EnemyPatrol : Movable
         return false;
     }
 
+    protected override void Update()
+    {
+        base.Update();
+        UpdateAnimationProperties();
+    }
+
     protected override float getHorizontalDirection()
     {
         // Patrol in a random direction
