@@ -26,18 +26,13 @@ public class DialogueController : MonoBehaviour
     void Update()
     {
         group.alpha = Mathf.MoveTowards(group.alpha, targetFade, 2f * Time.deltaTime);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ShowText("TEST!!!");
-        }
     }
 
-    public void ShowText(string text)
+    public void ShowText(string text, float timeToDisplay = 2f)
     {
         dialogueText.text = text;
         targetFade = 1f;
-        StartCoroutine(HideTextCoroutine(2f));
+        StartCoroutine(HideTextCoroutine(timeToDisplay));
     }
 
     IEnumerator HideTextCoroutine(float delay)
