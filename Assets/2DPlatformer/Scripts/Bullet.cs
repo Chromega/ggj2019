@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : Weaponable
 {
     public Vector3 velocity;
+    public int direction = 1;
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -16,6 +17,6 @@ public class Bullet : Weaponable
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = velocity;
+        rb.velocity = velocity * direction;
     }
 }
