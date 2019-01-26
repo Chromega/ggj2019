@@ -13,6 +13,10 @@ public class PlayerChain : MonoBehaviour
 
     public static PlayerChain Instance { get; private set; }
 
+    // Events
+    public static System.Action allDied;
+    public static System.Action memberLost;
+
     private void Awake()
     {
         Instance = this;
@@ -27,6 +31,8 @@ public class PlayerChain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentControlled == null) return;
+
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             SetPlayerIndex((currentControlledIdx + 1) % players.Count);
@@ -56,6 +62,7 @@ public class PlayerChain : MonoBehaviour
 
     void SetPlayerIndex(int playerIndex)
     {
+
         for (int i = 0; i < players.Count; ++i)
         {
             int queueIndex = (i - playerIndex + players.Count) % players.Count;
@@ -73,7 +80,6 @@ public class PlayerChain : MonoBehaviour
                 DeactivatePlayer(i);
             players[i].SetQueueOrder(queueIndex);
         }
-
     }
 
     void ActivatePlayer(int idx)
@@ -93,5 +99,19 @@ public class PlayerChain : MonoBehaviour
         players.Add(controller);
         controller.SetQueueOrder(players.Count - 1);
         controller.Deactivate();
+    }
+
+    public void RemoveFromChain(PlayerController controller)
+    {
+        players.Remove(controller);
+        SetPlayerIndex(currentControlledIdx);
+
+        if (players.Count == 0)
+        {
+            currentControlled = null;
+            if (allDied != null) allDied();
+        }
+
+        if (memberLost != null) memberLost();
     }
 }

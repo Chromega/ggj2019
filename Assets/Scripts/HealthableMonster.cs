@@ -26,9 +26,4 @@ public class HealthableMonster : Healthable
             Die();
         }
     }
-
-    public override void Die()
-    {
-        Destroy(gameObject);
-    }
 }

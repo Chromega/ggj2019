@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    // strings
     public Canvas dialogueCanvas;
     string startText = "The story of a founder building the {0} for {1}";
-    public string loseText = "You ran out of money. Start a new company?";
+    public string loseTextNoMoney = "You ran out of money. Start a new company?";
+    public string loseTextNoPlayers = "Everyone quit. Start a new company?";
     public string winText = "You IPO'd! Start a new company?";
-    private bool isActive = true;
-
+    public Text fundsLeftText;
+    
     string[] companies =
     {
         "Uber",
@@ -46,13 +49,33 @@ public class GameManager : MonoBehaviour
         "toe hair"
     };
 
+    // state
+    private bool isActive = true;
+    public int funds = 10;
+
     // Start is called before the first frame update
     void Start()
     {
         // subscribe to events
-        PlayerController.onDied += PlayerController_OnDied;
+        PlayerChain.allDied += PlayerChain_AllDied;
+        PlayerChain.memberLost += PlayerChain_MemberLost;
         HealthableMonster.onDied += HealthableMonster_OnDied;
+
+        updateFundsLeft(funds);
     }
+
+    void PlayerChain_MemberLost()
+    {
+        funds -= 3;
+        updateFundsLeft(funds);
+
+        if (funds <= 0)
+        {
+            dialogueCanvas.GetComponent<DialogueController>().ShowText(loseTextNoMoney, 999.0f);
+            isActive = false;
+        }
+    }
+
 
     void HealthableMonster_OnDied()
     {
@@ -60,17 +83,17 @@ public class GameManager : MonoBehaviour
         isActive = false;
     }
 
-
-    void PlayerController_OnDied()
+    void PlayerChain_AllDied()
     {
-        dialogueCanvas.GetComponent<DialogueController>().ShowText(loseText, 999.0f);
+        dialogueCanvas.GetComponent<DialogueController>().ShowText(loseTextNoPlayers, 999.0f);
         isActive = false;
     }
 
     private void OnDestroy()
     {
         // unsubscribe from events
-        PlayerController.onDied -= PlayerController_OnDied;
+        PlayerChain.allDied -= PlayerChain_AllDied;
+        PlayerChain.memberLost -= PlayerChain_MemberLost;
         HealthableMonster.onDied -= HealthableMonster_OnDied;
     }
 
@@ -103,5 +126,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    public void updateFundsLeft(int hp)
+    {
+        fundsLeftText.text = "Funds Left: $" + funds.ToString();
+    }
 }

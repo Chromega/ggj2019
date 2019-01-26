@@ -5,7 +5,6 @@ public class PlayerController : Movable
 {
     public int queueOrder;
     public Weaponable weaponPrefab;
-    public Text fundsLeftText;
 
     Vector3 lastExactPathPosition;
     Vector3 exactPathPosition;
@@ -21,9 +20,6 @@ public class PlayerController : Movable
         Chillin
     }
     State state = State.Chillin;
-
-    // Events
-    public static System.Action onDied;
 
     // Use this for initialization
     void Awake()
@@ -66,7 +62,6 @@ public class PlayerController : Movable
     void Start()
     {
         Healthable healthable = GetComponent<Healthable>();
-        updateFundsLeft(healthable.health);
     }
 
     protected override void Update()
@@ -77,16 +72,6 @@ public class PlayerController : Movable
         }
 
         UpdateAnimationProperties();
-        
-        // check if died
-        Healthable healthable = GetComponent<Healthable>();
-        if (healthable.health <= 0)
-        {
-            if (onDied != null)
-            {
-                onDied();
-            }
-        }
         
         if (state == State.Active && Input.GetButtonUp("Fire1") && weaponPrefab)
         {
@@ -119,8 +104,6 @@ public class PlayerController : Movable
 
             velocity = (newPos - transform.position) / Time.deltaTime;
             transform.position = newPos;
-
-
 
             if (isStill)
             {
@@ -201,11 +184,6 @@ public class PlayerController : Movable
         targetVelocity = controller.targetVelocity;
     }
 
-    public void updateFundsLeft(int hp)
-    {
-        fundsLeftText.text = "Funds Left: $" + hp.ToString();
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (state != State.Chillin)
@@ -215,5 +193,11 @@ public class PlayerController : Movable
         {
             PlayerChain.Instance.AddToChain(this);
         }
+    }
+
+    public void Die()
+    {
+        // called by Healthable, which this does NOT inherit from
+        PlayerChain.Instance.RemoveFromChain(this);
     }
 }
