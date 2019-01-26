@@ -32,7 +32,7 @@ public class Healthable : MonoBehaviour
 
         // Flash red on the sprite for damage taken
         StartCoroutine("FlashDamageAnimation");
-        movable.Recoil((transform.position - g.transform.position).normalized); 
+        if (movable) movable.Recoil((transform.position - g.transform.position).normalized); 
     }
 
     IEnumerator FlashDamageAnimation()
