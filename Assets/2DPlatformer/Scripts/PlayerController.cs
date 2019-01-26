@@ -10,6 +10,7 @@ public class PlayerController : Movable
     Vector3 settlePosition;
     float settleAmount;
     bool isStill;
+    private int direction = 1; // 1 = right, -1 = left
 
     // Use this for initialization
     void Awake()
@@ -25,7 +26,16 @@ public class PlayerController : Movable
 
     protected override float getHorizontalDirection()
     {
-        return Input.GetAxis("Horizontal");
+        float horizontal = Input.GetAxis("Horizontal");
+        if (horizontal > 0)
+        {
+            direction = 1;
+        }
+        else if (horizontal < 0)
+        {
+            direction = -1;
+        }
+        return horizontal;
     }
 
     protected override void ComputeVelocity()
@@ -77,10 +87,26 @@ public class PlayerController : Movable
             velocity = (newPos - transform.position) / Time.deltaTime;
             transform.position = newPos;
 
+
+
             if (isStill)
+            {
                 settleAmount = Mathf.MoveTowards(settleAmount, 1f, 2f * Time.deltaTime);
-            else
+            }
+            else {
                 settleAmount = Mathf.MoveTowards(settleAmount, 0f, 2f * Time.deltaTime);
+
+                // Set the sprite direction
+                if (velocity.x > 0)
+                {
+                    direction = 1;
+                }
+                else if (velocity.x < 0)
+                {
+                    direction = -1;
+                }
+            }
+
         }
     }
 
@@ -90,6 +116,11 @@ public class PlayerController : Movable
             base.FixedUpdate();
         else
             grounded = true;
+    }
+
+    public int GetDirection()
+    {
+        return direction;
     }
 
     public void SetQueueOrder(int queueOrder)

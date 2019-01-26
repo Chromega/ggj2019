@@ -58,15 +58,18 @@ public abstract class Movable : PhysicsObject
         yield return new WaitForSeconds(.1f);
         isRecoil = false; 
 
-        // FIXME(amber): Set direction back to the original at the end of the recoil. 
+        // FIXME(amber): Set player direction back to the original at the end of the recoil. 
+        // FIXED(seanyliu): velocity no longer sets the player's direction
     }
 
 
     protected virtual void UpdateAnimationProperties()
     {
-
         bool flipSprite = (spriteRenderer.flipX ? (velocity.x > 0.01f) : (velocity.x < -0.01f));
-        if (flipSprite && !isRecoil)
+        if (gameObject.GetComponent<PlayerController>()) {
+            // for PlayerController, set the direction based on GetDirection() which is set by keyboard
+            spriteRenderer.flipX = (gameObject.GetComponent<PlayerController>().GetDirection() < 0);
+        } else if (flipSprite && !isRecoil)
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
