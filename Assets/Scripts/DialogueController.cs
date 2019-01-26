@@ -26,11 +26,6 @@ public class DialogueController : MonoBehaviour
     void Update()
     {
         group.alpha = Mathf.MoveTowards(group.alpha, targetFade, 2f * Time.deltaTime);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ShowText("TEST!!!");
-        }
     }
 
     public void ShowText(string text)
