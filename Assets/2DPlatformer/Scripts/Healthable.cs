@@ -7,13 +7,14 @@ public class Healthable : MonoBehaviour
 {
     public int health = 10;
 
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private Animator animator;
     private Movable movable; 
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (!spriteRenderer)
+            spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         movable = GetComponent<Movable>();
     }
