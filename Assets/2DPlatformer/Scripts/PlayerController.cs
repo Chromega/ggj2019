@@ -4,6 +4,7 @@ public class PlayerController : Movable
 {
     public int queueOrder;
     public Collider2D collider2D;
+    public Weaponable weapon;
 
     // Use this for initialization
     void Awake()

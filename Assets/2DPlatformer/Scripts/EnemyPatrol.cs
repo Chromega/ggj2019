@@ -3,6 +3,11 @@
 public class EnemyPatrol : Movable
 {
 
+    public PlayerController player; 
+    public float visionRange = 5; 
+    private float direction = -1.0f;
+
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -16,8 +21,25 @@ public class EnemyPatrol : Movable
 
     protected override float getHorizontalDirection()
     {
-        float randomDirection = Random.Range(0.0f, 1.0f);
-        Debug.Log(randomDirection);
-        return randomDirection;
+        // Patrol in a random direction
+        float probability = Random.Range(0.0f, 1.0f);
+        if (probability > 0.97f)
+        {
+            direction *= -1;
+        }
+
+        // If you see the player, walk toward the player
+        Vector2 playerPosition = player.transform.position;
+        Vector2 position = this.transform.position;
+
+        if (Mathf.Abs(playerPosition.x - position.x) < visionRange)
+        {
+            Debug.Log("I SEE YOU");
+            direction = (playerPosition.x - position.x) / (Mathf.Abs(playerPosition.x - position.x));
+        }
+
+
+
+        return direction;
     }
 }
