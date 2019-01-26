@@ -9,7 +9,11 @@ public class Healthable : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
     private Animator animator;
-    private Movable movable; 
+    private Movable movable;
+
+    // Events
+    // FIXME (seanyliu): make this non-static. Currently all Healthables fire this
+    public static System.Action onDamaged;
 
     private void Awake()
     {
@@ -50,8 +54,8 @@ public class Healthable : MonoBehaviour
 
         StartCoroutine(FadeDamageMarker(damageMarker));
 
-        PlayerController player = GetComponent<PlayerController>();
-        if (player) player.updateFundsLeft(health);
+        // call the damaged event
+        if (onDamaged != null) onDamaged();
     }
 
     IEnumerator FadeDamageMarker(GameObject damageMarker)
@@ -91,5 +95,11 @@ public class Healthable : MonoBehaviour
 
     public virtual void Die()
     {
+        PlayerController pc = gameObject.GetComponent<PlayerController>();
+        if (pc)
+        {
+            pc.Die();
+        }
+        Destroy(gameObject);
     }
 }
