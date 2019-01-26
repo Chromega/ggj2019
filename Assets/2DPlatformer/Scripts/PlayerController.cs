@@ -47,7 +47,7 @@ public class PlayerController : Movable
             if (weaponPrefab is Bullet)
             {
                 Bullet bullet = (Bullet)weapon;
-                bullet.velocity = new Vector3(weaponDirection, 0, 0);
+                bullet.direction = weaponDirection;
             }
         }
     }
