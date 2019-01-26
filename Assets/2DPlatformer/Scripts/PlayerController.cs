@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : Movable
 {
     public int queueOrder;
     public Weaponable weaponPrefab;
+    public Text fundsLeftText;
 
     Vector3 lastExactPathPosition;
     Vector3 exactPathPosition;
@@ -16,6 +18,9 @@ public class PlayerController : Movable
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        Healthable healthable = GetComponent<Healthable>();
+        updateFundsLeft(healthable.health);
     }
 
     protected override bool getJump()
@@ -133,5 +138,10 @@ public class PlayerController : Movable
         transform.position = controller.transform.position;
         velocity = controller.velocity;
         targetVelocity = controller.targetVelocity;
+    }
+
+    public void updateFundsLeft(int hp)
+    {
+        fundsLeftText.text = "Funds Left: $" + hp.ToString();
     }
 }

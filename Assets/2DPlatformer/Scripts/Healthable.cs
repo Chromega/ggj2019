@@ -32,7 +32,10 @@ public class Healthable : MonoBehaviour
 
         // Flash red on the sprite for damage taken
         StartCoroutine("FlashDamageAnimation");
-        if (movable) movable.Recoil((transform.position - g.transform.position).normalized); 
+        if (movable) movable.Recoil((transform.position - g.transform.position).normalized);
+
+        PlayerController player = GetComponent<PlayerController>();
+        if (player) player.updateFundsLeft(health);
     }
 
     IEnumerator FlashDamageAnimation()
