@@ -272,11 +272,11 @@ PrefabInstance:
       objectReference: {fileID: 1473346445}
     - target: {fileID: 1457097403, guid: 7ec4407ca4506f7489e44eaf4f07c87e, type: 3}
       propertyPath: jumpTakeOffSpeed
-      value: 7
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1457097403, guid: 7ec4407ca4506f7489e44eaf4f07c87e, type: 3}
       propertyPath: gravityModifier
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ec4407ca4506f7489e44eaf4f07c87e, type: 3}
@@ -2696,11 +2696,19 @@ PrefabInstance:
       objectReference: {fileID: 1473346445}
     - target: {fileID: 326667753, guid: bd192ed6d1a030e42aa4d8106a3f80d4, type: 3}
       propertyPath: gravityModifier
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 326667753, guid: bd192ed6d1a030e42aa4d8106a3f80d4, type: 3}
       propertyPath: jumpTakeOffSpeed
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 326667753, guid: bd192ed6d1a030e42aa4d8106a3f80d4, type: 3}
+      propertyPath: horizontalSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 326667753, guid: bd192ed6d1a030e42aa4d8106a3f80d4, type: 3}
+      propertyPath: maxSpeed
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd192ed6d1a030e42aa4d8106a3f80d4, type: 3}
@@ -2841,19 +2849,19 @@ PrefabInstance:
       objectReference: {fileID: 1473346445}
     - target: {fileID: 1019450215, guid: 1c65063ddbd25e149b4cabeabb316aca, type: 3}
       propertyPath: jumpTakeOffSpeed
-      value: 7
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 1019450215, guid: 1c65063ddbd25e149b4cabeabb316aca, type: 3}
       propertyPath: gravityModifier
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1019450215, guid: 1c65063ddbd25e149b4cabeabb316aca, type: 3}
       propertyPath: maxSpeed
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1019450215, guid: 1c65063ddbd25e149b4cabeabb316aca, type: 3}
       propertyPath: horizontalSpeed
-      value: 1.2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c65063ddbd25e149b4cabeabb316aca, type: 3}
@@ -5832,7 +5840,7 @@ PrefabInstance:
     - target: {fileID: 114538131317111912, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f387d2a5577afa47b4f87e4e846f091, type: 3}
