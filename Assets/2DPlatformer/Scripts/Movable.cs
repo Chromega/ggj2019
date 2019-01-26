@@ -3,7 +3,6 @@ using System.Collections;
 
 public abstract class Movable : PhysicsObject
 {
-
     public SpriteRenderer spriteRenderer;
     public Animator animator;
 
@@ -38,7 +37,7 @@ public abstract class Movable : PhysicsObject
     protected virtual void UpdateAnimationProperties()
     {
 
-        bool flipSprite = (spriteRenderer.flipX ? (velocity.x > 0.01f) : (velocity.x < 0.01f));
+        bool flipSprite = (spriteRenderer.flipX ? (velocity.x > 0.01f) : (velocity.x < -0.01f));
         if (flipSprite)
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
