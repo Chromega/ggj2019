@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 218086365}
   - component: {fileID: 218086367}
   - component: {fileID: 4867637423041227569}
-  m_Layer: 0
-  m_Name: DemoCrate
+  m_Layer: 9
+  m_Name: EnemyBug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
