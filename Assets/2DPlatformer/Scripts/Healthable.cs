@@ -56,5 +56,6 @@ public class Healthable : MonoBehaviour
     void Die()
     {
         Debug.Log("DEATH");
+        Destroy(gameObject); 
     }
 }
