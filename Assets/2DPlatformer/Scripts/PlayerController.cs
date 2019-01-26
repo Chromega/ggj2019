@@ -37,21 +37,17 @@ public class PlayerController : Movable
             base.Update();
         UpdateAnimationProperties();
 
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1") && weaponPrefab)
         {
             int weaponDirection = spriteRenderer.flipX ? -1 : 1;
             Vector3 weaponPosition = new Vector3(transform.position.x + weaponDirection * 0.5f, transform.position.y + 0.5f, transform.position.z);
+            Weaponable weapon = Instantiate(weaponPrefab, weaponPosition, Quaternion.identity);
+            weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
 
             if (weaponPrefab is Bullet)
             {
-                Bullet weapon = (Bullet)Instantiate(weaponPrefab, weaponPosition, Quaternion.identity);
-                weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
-                weapon.velocity = new Vector3(weaponDirection, 0, 0);
-            }
-            else if (weaponPrefab is Sword)
-            {
-                Sword weapon = (Sword)Instantiate(weaponPrefab, weaponPosition, Quaternion.identity);
-                weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
+                Bullet bullet = (Bullet)weapon;
+                bullet.velocity = new Vector3(weaponDirection, 0, 0);
             }
         }
     }
