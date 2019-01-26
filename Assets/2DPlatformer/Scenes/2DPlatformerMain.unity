@@ -2698,9 +2698,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
-  gravityModifier: 0.5
-  maxSpeed: 3
-  jumpTakeOffSpeed: 4
+  gravityModifier: 2.5
+  maxSpeed: 5
+  jumpTakeOffSpeed: 7
+  horizontalSpeed: 0.8
 --- !u!212 &1343681236 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 212991655389708426, guid: e7fcecc826687024e9b52ec763b14088,
