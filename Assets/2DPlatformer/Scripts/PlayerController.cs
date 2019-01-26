@@ -60,6 +60,8 @@ public class PlayerController : Movable
     public void SetQueueOrder(int queueOrder)
     {
         this.queueOrder = queueOrder;
+        if (spriteRenderer)
+            spriteRenderer.sortingOrder = -1*queueOrder;
     }
 
     public void Activate()
