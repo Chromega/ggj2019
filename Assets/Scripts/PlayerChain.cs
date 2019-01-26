@@ -33,7 +33,7 @@ public class PlayerChain : MonoBehaviour
         }
 
         positionHistory.Add(currentControlled.transform.position);
-        const int kHistoryLength = 30;
+        const int kHistoryLength = 60;
         if (positionHistory.Count > kHistoryLength)
         {
             positionHistory = positionHistory.GetRange(1, kHistoryLength);
@@ -42,7 +42,7 @@ public class PlayerChain : MonoBehaviour
         for (int queueIdx = 1; queueIdx < players.Count; ++queueIdx)
         {
             int playerIdx = (currentControlledIdx + queueIdx) % players.Count;
-            players[playerIdx].SetPosition(GetHistory(queueIdx * 15), currentControlled.spriteRenderer.flipX?-1:1);
+            players[playerIdx].SetPosition(GetHistory(queueIdx * 30), currentControlled.spriteRenderer.flipX?-1:1);
         }
 
         transform.position = currentControlled.transform.position;
