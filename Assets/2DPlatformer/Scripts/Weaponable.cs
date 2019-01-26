@@ -26,8 +26,7 @@ public abstract class Weaponable : MonoBehaviour
         if (healthable)
         {
             healthable.TakeDamage(damageToDeal, gameObject);
-            finishCollision(); 
-            Destroy(gameObject);
+            finishCollision();
         }
 
     }
