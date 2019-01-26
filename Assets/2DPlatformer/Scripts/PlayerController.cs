@@ -20,7 +20,6 @@ public class PlayerController : Movable
         animator = GetComponent<Animator>();
 
         Healthable healthable = GetComponent<Healthable>();
-        updateFundsLeft(healthable.health);
     }
 
     protected override bool getJump()
@@ -39,6 +38,12 @@ public class PlayerController : Movable
             base.ComputeVelocity();
         else
             targetVelocity = velocity;
+    }
+
+    void Start()
+    {
+        Healthable healthable = GetComponent<Healthable>();
+        updateFundsLeft(healthable.health);
     }
 
     protected override void Update()
