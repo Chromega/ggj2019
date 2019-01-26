@@ -5,6 +5,12 @@ public class PlayerController : Movable
     public int queueOrder;
     public Weaponable weaponPrefab;
 
+    Vector3 lastExactPathPosition;
+    Vector3 exactPathPosition;
+    Vector3 settlePosition;
+    float settleAmount;
+    bool isStill;
+
     // Use this for initialization
     void Awake()
     {
@@ -49,6 +55,30 @@ public class PlayerController : Movable
                 bullet.direction = weaponDirection;
             }
         }
+
+        if (queueOrder != 0)
+        {
+            Vector3 newPos;
+            if (settleAmount > 0.01f)
+            {
+                Vector3 settleLerpPos = Vector3.MoveTowards(transform.position, settlePosition, 3f * Time.deltaTime);
+                Vector3 pos = Vector3.Lerp(exactPathPosition, settleLerpPos, settleAmount);
+                pos.y = exactPathPosition.y;
+                newPos = pos;
+            }
+            else
+            {
+                newPos = exactPathPosition;
+            }
+
+            velocity = (newPos - transform.position) / Time.deltaTime;
+            transform.position = newPos;
+
+            if (isStill)
+                settleAmount = Mathf.MoveTowards(settleAmount, 1f, 2f * Time.deltaTime);
+            else
+                settleAmount = Mathf.MoveTowards(settleAmount, 0f, 2f * Time.deltaTime);
+        }
     }
 
     protected override void FixedUpdate()
@@ -76,11 +106,23 @@ public class PlayerController : Movable
         collider2D.enabled = false;
     }
 
-    public void SetPosition(Vector3 pos)
+    public void SetPosition(Vector3 pos, float parentFlipSign)
     {
-        Vector3 posDiff = pos - transform.position;
-        transform.position = pos;
-        velocity = posDiff / Time.deltaTime;
+        Vector3 posDiff = pos - lastExactPathPosition;
+        //transform.position = pos;
+        //velocity = posDiff / Time.deltaTime;
+
+        settlePosition = pos - .4f * queueOrder * Vector3.right * parentFlipSign;
+        lastExactPathPosition = exactPathPosition;
+        exactPathPosition = pos;
+
+        if ((posDiff).sqrMagnitude < .001f)
+            isStill = true;
+        else
+            isStill = false;
+
+        if (!Physics2D.Linecast(settlePosition, (Vector2)settlePosition + Vector2.down * .1f, (int)PhysicsUtl.LayerMasksBitmasks.Default))
+            settlePosition = pos;
     }
 
     public void CopyFromOther(PlayerController controller)

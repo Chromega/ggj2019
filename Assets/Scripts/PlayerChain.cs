@@ -42,7 +42,7 @@ public class PlayerChain : MonoBehaviour
         for (int queueIdx = 1; queueIdx < players.Length; ++queueIdx)
         {
             int playerIdx = (currentControlledIdx + queueIdx) % players.Length;
-            players[playerIdx].SetPosition(GetHistory(queueIdx * 15));
+            players[playerIdx].SetPosition(GetHistory(queueIdx * 15), currentControlled.spriteRenderer.flipX?-1:1);
         }
 
         transform.position = currentControlled.transform.position;
