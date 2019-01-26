@@ -39,10 +39,13 @@ public class PlayerController : Movable
     protected override void Update()
     {
         if (queueOrder == 0)
+        {
             base.Update();
+        }
+
         UpdateAnimationProperties();
 
-        if (Input.GetButtonUp("Fire1") && weaponPrefab)
+        if (queueOrder == 0 && Input.GetButtonUp("Fire1") && weaponPrefab)
         {
             int weaponDirection = spriteRenderer.flipX ? -1 : 1;
             Vector3 weaponPosition = new Vector3(transform.position.x + weaponDirection * 0.5f, transform.position.y + 0.5f, transform.position.z);
