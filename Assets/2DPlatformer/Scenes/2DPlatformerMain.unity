@@ -274,12 +274,12 @@ PrefabInstance:
     - target: {fileID: 212991655389708426, guid: e7fcecc826687024e9b52ec763b14088,
         type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.46625388
       objectReference: {fileID: 0}
     - target: {fileID: 212991655389708426, guid: e7fcecc826687024e9b52ec763b14088,
         type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212991655389708426, guid: e7fcecc826687024e9b52ec763b14088,
         type: 3}
@@ -343,6 +343,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2441110777510907452, guid: e7fcecc826687024e9b52ec763b14088,
+        type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 1109546692411712594, guid: 2625fd8da140e469eb5eacd84f0923db,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7fcecc826687024e9b52ec763b14088, type: 3}
 --- !u!1 &953545107 stripped
@@ -447,11 +453,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4237855052870848, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.83621025
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 4237855052870848, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.7133875
+      value: 4.17
       objectReference: {fileID: 0}
     - target: {fileID: 4237855052870848, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3219,7 +3225,7 @@ PrefabInstance:
     - target: {fileID: 20134372339604138, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 3}
       propertyPath: orthographic size
-      value: 3
+      value: 3.84375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f387d2a5577afa47b4f87e4e846f091, type: 3}
