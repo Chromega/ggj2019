@@ -7,13 +7,14 @@ public class Healthable : MonoBehaviour
 {
     public int health = 10;
 
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private Animator animator;
     private Movable movable; 
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (!spriteRenderer)
+            spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         movable = GetComponent<Movable>();
     }
@@ -59,12 +60,10 @@ public class Healthable : MonoBehaviour
         for (float f = 1f; f >= 0; f -= 0.1f)
         {
             damageMarker.transform.position = new Vector3(damageMarker.transform.position.x, damageMarker.transform.position.y + 0.1f, -2);
-            Debug.Log(damageMarker.transform.position);
-            Debug.Log(damageMarker.transform.localPosition);
 
             TextMesh text = damageMarker.GetComponent<TextMesh>();
             text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - 0.05f);
-            Debug.Log(text.color);
+
             yield return new WaitForSeconds(.05f);
         }
 

@@ -13,12 +13,23 @@ public class PlayerController : Movable
     float settleAmount;
     bool isStill;
     private int direction = 1; // 1 = right, -1 = left
+    
+    public enum State
+    {
+        Active,
+        Following,
+        Chillin
+    }
+    State state;
+    public static System.Action onDied;
 
     // Use this for initialization
     void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        if (!spriteRenderer)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        if (!animator)
+            animator = GetComponent<Animator>();
 
         Healthable healthable = GetComponent<Healthable>();
     }
@@ -44,7 +55,7 @@ public class PlayerController : Movable
 
     protected override void ComputeVelocity()
     {
-        if (queueOrder == 0)
+        if (state == State.Active)
             base.ComputeVelocity();
         else
             targetVelocity = velocity;
@@ -58,14 +69,24 @@ public class PlayerController : Movable
 
     protected override void Update()
     {
-        if (queueOrder == 0)
+        if (state == State.Active)
         {
             base.Update();
         }
 
         UpdateAnimationProperties();
-
-        if (queueOrder == 0 && Input.GetButtonUp("Fire1") && weaponPrefab)
+        
+        // check if died
+        Healthable healthable = GetComponent<Healthable>();
+        if (healthable.health <= 0)
+        {
+            if (onDied != null)
+            {
+                onDied();
+            }
+        }
+        
+        if (state == State.Active && Input.GetButtonUp("Fire1") && weaponPrefab)
         {
             int weaponDirection = spriteRenderer.flipX ? -1 : 1;
             Vector3 weaponPosition = new Vector3(transform.position.x + weaponDirection * 0.5f, transform.position.y + 0.5f, transform.position.z);
@@ -79,7 +100,7 @@ public class PlayerController : Movable
             }
         }
 
-        if (queueOrder != 0)
+        if (state == State.Following)
         {
             Vector3 newPos;
             if (settleAmount > 0.01f)
@@ -122,7 +143,7 @@ public class PlayerController : Movable
 
     protected override void FixedUpdate()
     {
-        if (queueOrder == 0)
+        if (state == State.Active)
             base.FixedUpdate();
         else
             grounded = true;
@@ -143,11 +164,13 @@ public class PlayerController : Movable
     public void Activate()
     {
         collider2D.enabled = true;
+        state = State.Active;
     }
 
     public void Deactivate()
     {
         collider2D.enabled = false;
+        state = State.Following;
     }
 
     public void SetPosition(Vector3 pos, float parentFlipSign)
