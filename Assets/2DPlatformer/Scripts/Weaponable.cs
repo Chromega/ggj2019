@@ -22,23 +22,20 @@ public abstract class Weaponable : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Healthable healthable = col.gameObject.GetComponent<Healthable>();
-        if (healthable)
-        {
-            healthable.TakeDamage(damageToDeal, gameObject);
-            finishCollision();
-        }
-
+        dealDamage(col.gameObject.GetComponent<Healthable>());
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Healthable healthable = col.gameObject.GetComponent<Healthable>();
+        dealDamage(col.gameObject.GetComponent<Healthable>());
+    }
+
+    void dealDamage(Healthable healthable)
+    {
         if (healthable)
         {
             healthable.TakeDamage(damageToDeal, gameObject);
             finishCollision();
         }
-
     }
 }
