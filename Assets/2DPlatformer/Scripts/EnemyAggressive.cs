@@ -19,7 +19,7 @@ public class EnemyAggressive : EnemyPatrol
         Vector2 playerPosition = PlayerChain.Instance.transform.position;
         Vector2 position = this.transform.position;
 
-        if (Mathf.Abs(playerPosition.x - position.x) < visionRange)
+        if (PlayerChain.Instance.players.Count > 0 && Mathf.Abs(playerPosition.x - position.x) < visionRange)
         {
             float direction = (playerPosition.x - position.x) / (Mathf.Abs(playerPosition.x - position.x));
 
