@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public string loseTextNoPlayers = "Everyone quit. Start a new company?";
     public string memberLostText = "Team member burned out";
     public string winText = "You IPO'd! Start a new company?";
+    public string bitcoinText = "Mined some BTC";
     public Text fundsLeftText;
     
     string[] companies =
@@ -60,9 +61,18 @@ public class GameManager : MonoBehaviour
         // subscribe to events
         PlayerChain.memberLost += PlayerChain_MemberLost;
         HealthableHipo.onDied += HealthableHipo_OnDied;
+        Bitcoin.addFundsEvent += Bitcoin_AddFundsEvent;
 
         updateFundsLeft();
     }
+
+    void Bitcoin_AddFundsEvent()
+    {
+        funds += 1;
+        updateFundsLeft();
+        updateDialogueText(bitcoinText);
+    }
+
 
     void PlayerChain_MemberLost()
     {
@@ -99,6 +109,7 @@ public class GameManager : MonoBehaviour
         // unsubscribe from events
         PlayerChain.memberLost -= PlayerChain_MemberLost;
         HealthableHipo.onDied -= HealthableHipo_OnDied;
+        Bitcoin.addFundsEvent -= Bitcoin_AddFundsEvent;
     }
 
     private void Awake()
