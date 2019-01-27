@@ -77,10 +77,12 @@ public class PlayerController : Movable
         if (state == State.Active && Input.GetButtonUp("Fire1") && weaponPrefab)
         {
             int weaponDirection = spriteRenderer.flipX ? -1 : 1;
-            Vector3 weaponLocalPosition = weaponSpawnPoint.localPosition;//new Vector3(transform.position.x + weaponDirection * 0.5f, transform.position.y + 0.5f, transform.position.z);
+            Vector3 weaponWorldPosition = weaponSpawnPoint.position;
+
+            Vector3 weaponLocalPosition = transform.InverseTransformPoint(weaponWorldPosition);//new Vector3(transform.position.x + weaponDirection * 0.5f, transform.position.y + 0.5f, transform.position.z);
             if (spriteRenderer.flipX)
                 weaponLocalPosition.x *= -1;
-            Vector3 weaponWorldPosition = transform.TransformPoint(weaponLocalPosition);
+            weaponWorldPosition = transform.TransformPoint(weaponLocalPosition);
             Weaponable weapon = Instantiate(weaponPrefab, weaponWorldPosition, Quaternion.identity);
             weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
 
