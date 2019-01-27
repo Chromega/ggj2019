@@ -13,7 +13,9 @@ public abstract class Movable : PhysicsObject
     public float recoilTakeoffSpeed = 0.8f;
 
     private bool isRecoil = false;
-    private int recoilDirection; 
+    private int recoilDirection;
+
+    public bool isBackwards;
 
     protected abstract float getHorizontalDirection();
     protected abstract bool getJump(); 
@@ -72,7 +74,7 @@ public abstract class Movable : PhysicsObject
 
     protected virtual void UpdateAnimationProperties()
     {
-        bool flipSprite = (spriteRenderer.flipX ? (velocity.x > 0.01f) : (velocity.x < -0.01f));
+        bool flipSprite = ((spriteRenderer.flipX^isBackwards) ? (velocity.x > 0.01f) : (velocity.x < -0.01f));
         if (gameObject.GetComponent<PlayerController>()) {
             // for PlayerController, set the direction based on GetDirection() which is set by keyboard
             spriteRenderer.flipX = (gameObject.GetComponent<PlayerController>().GetDirection() < 0);
@@ -84,6 +86,7 @@ public abstract class Movable : PhysicsObject
         {
             animator.SetBool("grounded", grounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+            animator.SetBool("moving", Mathf.Abs(velocity.x)>.01f);
         }
     }
 }
