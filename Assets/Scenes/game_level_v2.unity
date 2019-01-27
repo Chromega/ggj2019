@@ -16424,6 +16424,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreditsScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 687794501, guid: 14a12906481e442fba6ba4cb849fce7b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 687794502, guid: 14a12906481e442fba6ba4cb849fce7b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -16507,6 +16511,10 @@ PrefabInstance:
     - target: {fileID: 687794502, guid: 14a12906481e442fba6ba4cb849fce7b, type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 687794506, guid: 14a12906481e442fba6ba4cb849fce7b, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 687794505, guid: 14a12906481e442fba6ba4cb849fce7b, type: 3}
       propertyPath: m_UiScaleMode
