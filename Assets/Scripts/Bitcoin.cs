@@ -6,6 +6,7 @@ public class Bitcoin : MonoBehaviour
 {
     // Events
     public static System.Action addFundsEvent;
+    public AudioClip soundEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class Bitcoin : MonoBehaviour
 
     void addFunds()
     {
+        if (soundEffect) AudioSource.PlayClipAtPoint(soundEffect, new Vector3(0, 0, 0), 1f);
         if (addFundsEvent != null) addFundsEvent();
         Destroy(gameObject);
     }

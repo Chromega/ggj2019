@@ -178,12 +178,14 @@ MonoBehaviour:
   health: 10
   spriteRenderer: {fileID: 0}
   invincible: 0
+  deathSoundEffect: {fileID: 8300000, guid: 5a8de9ec838ed284bb4e49cd4620a3ca, type: 3}
   spawnPrefabs:
   - {fileID: 1222806087177142, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee, type: 3}
   - {fileID: 4763195633204100054, guid: 64f1d1ee71bf8844086cd302a18b8f79, type: 3}
   spawnTime: 3
   animator: {fileID: 232593760111678041}
   spawnPos: {fileID: 2950892876194369610}
+  spawnSoundEffect: {fileID: 8300000, guid: 8380c96500de210498407ba7f7b28ebe, type: 3}
 --- !u!95 &232593760111678041
 Animator:
   serializedVersion: 3
@@ -216,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToDeal: 2
+  attackSoundEffect: {fileID: 8300000, guid: c2a4e5c999e0f7e4e83f105fed2ec3a1, type: 3}
 --- !u!114 &7961549935232136485
 MonoBehaviour:
   m_ObjectHideFlags: 0

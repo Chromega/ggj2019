@@ -11,6 +11,7 @@ public class Healthable : MonoBehaviour
     private Animator animator;
     private Movable movable;
     public bool invincible = false;
+    public AudioClip deathSoundEffect;
 
     // Events
     // FIXME (seanyliu): make this non-static. Currently all Healthables fire this
@@ -98,6 +99,8 @@ public class Healthable : MonoBehaviour
 
     public virtual void Die()
     {
+        if (deathSoundEffect) AudioSource.PlayClipAtPoint(deathSoundEffect, new Vector3(0, 0, 0));
+
         PlayerController pc = gameObject.GetComponent<PlayerController>();
         if (pc)
         {

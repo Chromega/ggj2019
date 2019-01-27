@@ -107,6 +107,7 @@ MonoBehaviour:
   health: 10
   spriteRenderer: {fileID: 3312341946411787757}
   invincible: 0
+  deathSoundEffect: {fileID: 8300000, guid: 5a8de9ec838ed284bb4e49cd4620a3ca, type: 3}
 --- !u!114 &326667753
 MonoBehaviour:
   m_ObjectHideFlags: 0
