@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4006041808432405980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2950892876194369610}
+  m_Layer: 9
+  m_Name: SpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2950892876194369610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006041808432405980}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.24, y: 4.94, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1484351331557862275}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4612497159298289734
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,7 +63,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2950892876194369610}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -74,7 +105,7 @@ SpriteRenderer:
   m_SortingLayerID: -888973317
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a67c3fb8b7a0c6343998dfa3c442b511, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68f80bcad162c0b4e81706be5f9e253e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,10 +129,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6, y: -0.6}
+  m_Offset: {x: 0.6, y: 3.8}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 12.166667, y: 9}
     newSize: {x: 12.166667, y: 9}
     adaptiveTilingThreshold: 0.5
@@ -146,9 +177,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   spriteRenderer: {fileID: 0}
-  spawnPrefab: {fileID: 1222806087177142, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee,
-    type: 3}
+  invincible: 0
+  spawnPrefabs:
+  - {fileID: 1222806087177142, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee, type: 3}
+  - {fileID: 4763195633204100054, guid: 64f1d1ee71bf8844086cd302a18b8f79, type: 3}
   spawnTime: 3
+  animator: {fileID: 232593760111678041}
+  spawnPos: {fileID: 2950892876194369610}
 --- !u!95 &232593760111678041
 Animator:
   serializedVersion: 3
@@ -159,7 +194,7 @@ Animator:
   m_GameObject: {fileID: 4612497159298289734}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d025f2c0cc474f41a56e32e81cf7b85, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -188,7 +223,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4612497159298289734}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e1479c9e20c14d13869fb6a5f8d9562, type: 3}
   m_Name: 

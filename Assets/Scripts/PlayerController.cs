@@ -133,13 +133,16 @@ public class PlayerController : Movable
             }
         }
 
-        if (Mathf.Abs(velocity.x) > .01f)
+        if (animator.runtimeAnimatorController)
         {
-            animator.SetBool("moving", true);
-        }
-        else
-        {
-            animator.SetBool("moving", false);
+            if (Mathf.Abs(velocity.x) > .01f)
+            {
+                animator.SetBool("moving", true);
+            }
+            else
+            {
+                animator.SetBool("moving", false);
+            }
         }
     }
 

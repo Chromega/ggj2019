@@ -5,8 +5,11 @@ using UnityEngine;
 public class HealthableHipo : Healthable
 {
 
-    public GameObject spawnPrefab;
+    public GameObject[] spawnPrefabs;
     public float spawnTime = 3f; // How long between each spawn.
+    public Animator animator;
+    public Transform spawnPos;
+    bool isBackwards = true;
 
     // Events
     public static System.Action onDied;
@@ -33,11 +36,23 @@ public class HealthableHipo : Healthable
         }
     }
 
-    void Spawn ()
+    IEnumerator Spawn ()
     {
+        animator.SetTrigger("attack");
+        yield return new WaitForSeconds(.65f);
+
+        Vector3 weaponWorldPosition = spawnPos.position;
+
+        Vector3 weaponLocalPosition = transform.InverseTransformPoint(weaponWorldPosition);//new Vector3(transform.position.x + weaponDirection * 0.5f, transform.position.y + 0.5f, transform.position.z);
+        if (spriteRenderer.flipX) weaponLocalPosition.x *= -1;
+        //if (isBackwards) weaponLocalPosition.x *= -1;
+        weaponWorldPosition = transform.TransformPoint(weaponLocalPosition);
+
+        GameObject spawnPrefab = spawnPrefabs[Random.Range(0, spawnPrefabs.Length)];
         // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
-        spawnedThings.Add(Instantiate(spawnPrefab, transform.position, transform.rotation));
+        spawnedThings.Add(Instantiate(spawnPrefab, weaponWorldPosition, transform.rotation));
     }
+    
 
     IEnumerator SpawnCoroutine()
     {
@@ -47,7 +62,7 @@ public class HealthableHipo : Healthable
             {
                 spawnedThings.RemoveWhere((thing) => { return thing == null; });
                 if (spawnedThings.Count < 10)
-                    Spawn();
+                    StartCoroutine(Spawn());
             }
             yield return new WaitForSeconds(spawnTime);
         }
