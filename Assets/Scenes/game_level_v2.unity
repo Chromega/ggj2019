@@ -1203,7 +1203,7 @@ PrefabInstance:
     - target: {fileID: 1573150240457601679, guid: 7c8a142dadb4b0b4995576ea254a563c,
         type: 3}
       propertyPath: text
-      value: You'll need a team to make your whiz biz idea to life
+      value: 'You''ll need a team to make your Produck complete. '
       objectReference: {fileID: 0}
     - target: {fileID: 1573150240457601664, guid: 7c8a142dadb4b0b4995576ea254a563c,
         type: 3}
@@ -1299,6 +1299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075586664207596226, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee,
+        type: 3}
+      propertyPath: horizontalSpeed
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1222806087177142, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee, type: 3}
       propertyPath: m_Name
@@ -1767,6 +1772,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5075586664207596226, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee,
+        type: 3}
+      propertyPath: horizontalSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1222806087177142, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee, type: 3}
       propertyPath: m_Name
       value: EnemyBug (1)
@@ -10584,7 +10594,7 @@ PrefabInstance:
     - target: {fileID: 1573150240457601679, guid: 7c8a142dadb4b0b4995576ea254a563c,
         type: 3}
       propertyPath: text
-      value: Watch out, a Bug!
+      value: Oh no, a bug!
       objectReference: {fileID: 0}
     - target: {fileID: 1573150240457601664, guid: 7c8a142dadb4b0b4995576ea254a563c,
         type: 3}
@@ -12538,6 +12548,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5075586664207596226, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee,
+        type: 3}
+      propertyPath: horizontalSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1222806087177142, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee, type: 3}
       propertyPath: m_Name
       value: EnemyBug (2)
@@ -13076,8 +13091,7 @@ PrefabInstance:
     - target: {fileID: 1573150240457601679, guid: 7c8a142dadb4b0b4995576ea254a563c,
         type: 3}
       propertyPath: text
-      value: The core idea is good, but your users need a better experience. Get that
-        Beesigner to join!
+      value: The idea is good, but you need a better UI. Where's Beesigner?
       objectReference: {fileID: 0}
     - target: {fileID: 1573150240457601664, guid: 7c8a142dadb4b0b4995576ea254a563c,
         type: 3}

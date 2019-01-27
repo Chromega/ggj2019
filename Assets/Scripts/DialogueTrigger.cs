@@ -8,7 +8,7 @@ public class DialogueTrigger : MonoBehaviour
     public string text;
     uint dialogueHandle;
     bool hasTriggered = false;
-    float minShowTime = 2f;
+    float minShowTime = 3f;
     float collisionTime;
 
     void OnTriggerEnter2D(Collider2D other)
