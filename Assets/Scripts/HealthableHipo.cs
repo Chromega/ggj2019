@@ -10,12 +10,13 @@ public class HealthableHipo : Healthable
 
     // Events
     public static System.Action onDied;
+
+    HashSet<GameObject> spawnedThings = new HashSet<GameObject>();
     
     // Called before the first frame update
     void Start()
     {
-        // Call the Spawn function after a delay of the spawnTime and then continue to call after the same amount of time.
-        InvokeRepeating ("Spawn", spawnTime, spawnTime);
+        StartCoroutine(SpawnCoroutine());
     }
 
     // Update is called once per frame
@@ -35,6 +36,20 @@ public class HealthableHipo : Healthable
     void Spawn ()
     {
         // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
-        Instantiate(spawnPrefab, transform.position, transform.rotation);
+        spawnedThings.Add(Instantiate(spawnPrefab, transform.position, transform.rotation));
+    }
+
+    IEnumerator SpawnCoroutine()
+    {
+        while (true)
+        {
+            if (spriteRenderer.isVisible)
+            {
+                spawnedThings.RemoveWhere((thing) => { return thing == null; });
+                if (spawnedThings.Count < 10)
+                    Spawn();
+            }
+            yield return new WaitForSeconds(spawnTime);
+        }
     }
 }
