@@ -126,8 +126,9 @@ public class GameManager : MonoBehaviour
 
         string company = companies[Random.Range(0, companies.Length)];
         string industry = industries[Random.Range(0, industries.Length)];
-        Debug.Log(string.Format(startText, company, industry));
-        dialogueCanvas.GetComponent<DialogueController>().ShowText(string.Format(startText, company, industry), 6.0f);
+        string startupPrompt = string.Format(startText, company, industry);
+        Debug.Log(startupPrompt);
+        dialogueCanvas.GetComponent<DialogueController>().ShowText(startupPrompt, 6.0f);
     }
 
     // Update is called once per frame
