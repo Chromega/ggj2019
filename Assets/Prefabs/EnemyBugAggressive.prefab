@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToDeal: 2
-  attackSoundEffect: {fileID: 8300000, guid: 14cae7a886052d640b78ef218a0e5328, type: 3}
+  attackSoundEffect: {fileID: 8300000, guid: c2a4e5c999e0f7e4e83f105fed2ec3a1, type: 3}
 --- !u!114 &4867637423041227569
 MonoBehaviour:
   m_ObjectHideFlags: 0
