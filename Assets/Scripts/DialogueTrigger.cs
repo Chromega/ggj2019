@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    [TextArea]
     public string text;
     uint dialogueHandle;
     bool hasTriggered = false;

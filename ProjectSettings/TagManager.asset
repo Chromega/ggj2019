@@ -51,3 +51,6 @@ TagManager:
   - name: Front
     uniqueID: 3405993979
     locked: 0
+  - name: Decorative_Fore
+    uniqueID: 1258904663
+    locked: 0
