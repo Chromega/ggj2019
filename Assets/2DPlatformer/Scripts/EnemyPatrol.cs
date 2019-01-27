@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class EnemyPatrol : Movable
 {
+
     public float visionRange = 5; 
     private float direction = -1.0f;
     protected bool patrolling = true;
-
 
     void Awake()
     {
@@ -45,6 +45,12 @@ public class EnemyPatrol : Movable
     {
         while (true)
         {
+            if (!patrolling)
+            {
+                yield return new WaitForSeconds(0.1f);
+                continue;
+            }
+
             direction = 0;
             yield return new WaitForSeconds(Random.Range(.2f, .5f));
             direction = Random.Range(0f,1f) > .5f ? -1 : 1;

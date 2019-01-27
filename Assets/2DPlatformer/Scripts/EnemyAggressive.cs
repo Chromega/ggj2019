@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyAggressive : EnemyPatrol
 {
 
+    public float visionRange = 5;
     private bool jump = false;
 
     protected override bool getJump()
@@ -21,6 +22,7 @@ public class EnemyAggressive : EnemyPatrol
 
         if (PlayerChain.Instance.players.Count > 0 && Mathf.Abs(playerPosition.x - position.x) < visionRange)
         {
+            patrolling = false; 
             float direction = (playerPosition.x - position.x) / (Mathf.Abs(playerPosition.x - position.x));
 
             // If on a ledge, yolo jump!
@@ -35,12 +37,13 @@ public class EnemyAggressive : EnemyPatrol
                 jump = true;
 
             // Stop jumping (mimic keypress for the full jump parabola) 
-
+            StartCoroutine(FinishJump());
 
             return direction;
         }
         else
         {
+            patrolling = true;
             return base.getHorizontalDirection();
         }
     }
