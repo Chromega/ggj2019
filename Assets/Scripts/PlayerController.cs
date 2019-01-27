@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : Movable
@@ -84,29 +85,7 @@ public class PlayerController : Movable
         
         if (state == State.Active && Input.GetButtonDown("Fire1") && weaponPrefab)
         {
-            int weaponDirection = spriteRenderer.flipX ? -1 : 1;
-            Vector3 weaponWorldPosition = weaponSpawnPoint.position;
-
-            Vector3 weaponLocalPosition = transform.InverseTransformPoint(weaponWorldPosition);//new Vector3(transform.position.x + weaponDirection * 0.5f, transform.position.y + 0.5f, transform.position.z);
-            if (spriteRenderer.flipX)
-                weaponLocalPosition.x *= -1;
-            weaponWorldPosition = transform.TransformPoint(weaponLocalPosition);
-            Castable weapon = Instantiate(weaponPrefab, weaponWorldPosition, Quaternion.identity);
-            //weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
-
-            if (weapon.GetCastType()== Castable.CastType.Sustained)
-            {
-                currentSustainedCast = weapon;
-            }
-
-            if (weaponPrefab is Bullet)
-            {
-                Bullet bullet = (Bullet)weapon;
-                bullet.direction = weaponDirection;
-            }
-            animator.SetTrigger("attack");
-
-            weapon.StartCast(this);
+            StartCoroutine(Cast());
         }
         if (Input.GetButtonUp("Fire1") && currentSustainedCast)
         {
@@ -159,6 +138,36 @@ public class PlayerController : Movable
         {
             animator.SetBool("moving", false);
         }
+    }
+
+    IEnumerator Cast()
+    {
+        animator.SetTrigger("attack");
+        if (weaponPrefab.GetCastTime() > 0)
+            yield return new WaitForSeconds(weaponPrefab.GetCastTime());
+
+        int weaponDirection = spriteRenderer.flipX ? -1 : 1;
+        Vector3 weaponWorldPosition = weaponSpawnPoint.position;
+
+        Vector3 weaponLocalPosition = transform.InverseTransformPoint(weaponWorldPosition);//new Vector3(transform.position.x + weaponDirection * 0.5f, transform.position.y + 0.5f, transform.position.z);
+        if (spriteRenderer.flipX)
+            weaponLocalPosition.x *= -1;
+        weaponWorldPosition = transform.TransformPoint(weaponLocalPosition);
+        Castable weapon = Instantiate(weaponPrefab, weaponWorldPosition, Quaternion.identity);
+        //weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
+
+        if (weapon.GetCastType() == Castable.CastType.Sustained)
+        {
+            currentSustainedCast = weapon;
+        }
+
+        if (weaponPrefab is Bullet)
+        {
+            Bullet bullet = (Bullet)weapon;
+            bullet.direction = weaponDirection;
+        }
+
+        weapon.StartCast(this);
     }
 
     protected override void FixedUpdate()

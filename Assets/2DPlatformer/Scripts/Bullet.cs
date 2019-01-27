@@ -27,4 +27,9 @@ public class Bullet : Weaponable
     {
         Destroy(gameObject);
     }
+
+    public override float GetCastTime()
+    {
+        return .16f;
+    }
 }

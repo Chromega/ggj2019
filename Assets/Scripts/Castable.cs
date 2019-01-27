@@ -10,6 +10,8 @@ public abstract class Castable : MonoBehaviour
         Sustained
     }
 
+    public virtual float GetCastTime() { return 0; }
+
     public abstract CastType GetCastType();
 
     public virtual void StartCast(PlayerController pc) { }
