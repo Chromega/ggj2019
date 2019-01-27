@@ -30,7 +30,7 @@ public class PhysicsObject : MonoBehaviour
     {
         contactFilter.useTriggers = false;
         //contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
-        contactFilter.SetLayerMask(0);// (int)PhysicsUtl.LayerMasksBitmasks.Default);
+        contactFilter.SetLayerMask((int)PhysicsUtl.LayerMasksBitmasks.Default);
         contactFilter.useLayerMask = true;
     }
 
