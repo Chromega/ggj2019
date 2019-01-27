@@ -9,6 +9,7 @@ public class FeatureCreep : MonoBehaviour
     public Castable weaponPrefab;
     public Transform weaponSpawnPointSmall;
     public Transform weaponSpawnPointBig;
+    public AudioClip attackSoundEffect;
 
     bool isBackwards = true;
 
@@ -118,6 +119,8 @@ public class FeatureCreep : MonoBehaviour
             Bullet bullet = (Bullet)weapon;
             bullet.direction = weaponDirection;
         }
+
+        if (attackSoundEffect) AudioSource.PlayClipAtPoint(attackSoundEffect, new Vector3(0, 0, 0));
     }
 
     private void LateUpdate()

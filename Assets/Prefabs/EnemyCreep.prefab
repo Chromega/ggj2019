@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToDeal: 2
+  attackSoundEffect: {fileID: 8300000, guid: 31591c2f698a28749a26e4fb6536606a, type: 3}
 --- !u!114 &2587201839372705217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   spriteRenderer: {fileID: 0}
+  invincible: 0
 --- !u!114 &5167978888868227426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +255,7 @@ MonoBehaviour:
     type: 3}
   weaponSpawnPointSmall: {fileID: 8670655024468217275}
   weaponSpawnPointBig: {fileID: 1178764916680801922}
+  attackSoundEffect: {fileID: 8300000, guid: 31591c2f698a28749a26e4fb6536606a, type: 3}
   animator: {fileID: 9081808757738424609}
 --- !u!1 &7024711676985087197
 GameObject:
