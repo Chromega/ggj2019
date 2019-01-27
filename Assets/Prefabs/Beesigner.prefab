@@ -133,8 +133,8 @@ MonoBehaviour:
   weaponPrefab: {fileID: 1109546692411712594, guid: 2625fd8da140e469eb5eacd84f0923db,
     type: 3}
   weaponSpawnPoint: {fileID: 1512370501}
-  attackSoundEffect: {fileID: 8300000, guid: 9242e9796447d1e43bfde5dfef6d49d0, type: 3}
-  swapSoundEffect: {fileID: 8300000, guid: edeb8b833d86e1c4492a3ad395aa4bec, type: 3}
+  attackSoundEffect: {fileID: 8300000, guid: 9a4ce047e1ec6c84f942e7c28c702a6b, type: 3}
+  swapSoundEffect: {fileID: 8300000, guid: ac6702bd0275f7a4499a67bae43ad259, type: 3}
 --- !u!1 &1512370500
 GameObject:
   m_ObjectHideFlags: 0
