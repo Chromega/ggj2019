@@ -87,6 +87,7 @@ public abstract class Movable : PhysicsObject
         }
         if (animator.runtimeAnimatorController)
         {
+            animator.logWarnings = false;
             animator.SetBool("grounded", grounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
             animator.SetBool("moving", Mathf.Abs(velocity.x)>.01f);
