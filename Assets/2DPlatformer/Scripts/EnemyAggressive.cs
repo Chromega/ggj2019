@@ -21,7 +21,6 @@ public class EnemyAggressive : EnemyPatrol
 
         if (Mathf.Abs(playerPosition.x - position.x) < visionRange)
         {
-            Debug.Log("trying to jump to you");
             float direction = (playerPosition.x - position.x) / (Mathf.Abs(playerPosition.x - position.x));
 
             // If on a ledge, yolo jump!
@@ -42,7 +41,6 @@ public class EnemyAggressive : EnemyPatrol
         }
         else
         {
-            Debug.Log("patrolling normally");
             return base.getHorizontalDirection();
         }
     }
