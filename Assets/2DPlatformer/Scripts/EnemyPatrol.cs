@@ -25,29 +25,24 @@ public class EnemyPatrol : Movable
         UpdateAnimationProperties();
     }
 
-    protected override float getHorizontalDirection()
+    protected void flipRandomDirection()
     {
-        // Patrol in a random direction
         float probability = Random.Range(0.0f, 1.0f);
-        if (probability > 0.97f)
+        if (probability > 0.98f)
         {
             direction *= -1;
         }
+    }
 
-        // If you see the player, walk toward the player
-        Vector2 playerPosition = PlayerChain.Instance.transform.position;
-        Vector2 position = this.transform.position;
+    protected override float getHorizontalDirection()
+    {
+        // Patrol in a random direction
+        flipRandomDirection(); 
 
-        if (Mathf.Abs(playerPosition.x - position.x) < visionRange)
-        {
-            direction = (playerPosition.x - position.x) / (Mathf.Abs(playerPosition.x - position.x));
-        }
-        //direction = 0;
-
+        // Stop if you're on a ledge
         bool leftGround;
         bool rightGround;
         PhysicsUtl.LedgeCheck(collider2D, out leftGround, out rightGround);
-        //Debug.Log(leftGround + " " + rightGround);
 
         float directionToReturn = direction;
         if (direction < 0 && !leftGround)
