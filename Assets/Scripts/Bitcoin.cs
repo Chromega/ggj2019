@@ -34,6 +34,6 @@ public class Bitcoin : MonoBehaviour
     {
         if (soundEffect) AudioSource.PlayClipAtPoint(soundEffect, new Vector3(0, 0, 0), 1f);
         if (addFundsEvent != null) addFundsEvent();
-        Destroy(gameObject, 0.3f);
+        Destroy(gameObject);
     }
 }
