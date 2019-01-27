@@ -32,7 +32,7 @@ public class PlayerChain : MonoBehaviour
     {
         if (currentControlled == null) return;
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.LeftShift))
         {
             SetPlayerIndex((currentControlledIdx + 1) % players.Count);
         }
