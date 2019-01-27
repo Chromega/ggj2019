@@ -202,4 +202,5 @@ MonoBehaviour:
   jumpTakeOffSpeed: 3
   horizontalSpeed: 0.1
   recoilTakeoffSpeed: 0.8
+  isBackwards: 1
   visionRange: 15
