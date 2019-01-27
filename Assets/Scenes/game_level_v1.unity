@@ -3500,6 +3500,11 @@ PrefabInstance:
       propertyPath: dialogueCanvas
       value: 
       objectReference: {fileID: 246234189}
+    - target: {fileID: 8791186843765292142, guid: 8f2dcdf9894e94b6480c0d8cf7751132,
+        type: 3}
+      propertyPath: fundsLeftText
+      value: 
+      objectReference: {fileID: 1473346445}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f2dcdf9894e94b6480c0d8cf7751132, type: 3}
 --- !u!1001 &1301649971

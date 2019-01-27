@@ -44,4 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueCanvas: {fileID: 0}
-  startText: The story of a founder building the Uber for Crypto
+  loseTextNoMoney: You ran out of money. Start a new company?
+  loseTextNoPlayers: Everyone quit. Start a new company?
+  memberLostText: Team member burned out
+  winText: You IPO'd! Start a new company?
+  bitcoinText: Mined some BTC
+  fundsLeftText: {fileID: 0}
+  funds: 10
