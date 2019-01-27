@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public string winText = "You IPO'd! Start a new company?";
     public string bitcoinText = "Mined some BTC";
     public Text fundsLeftText;
+    public Canvas creditsCanvas;
     
     string[] companies =
     {
@@ -103,6 +104,15 @@ public class GameManager : MonoBehaviour
         updateFundsLeft();
         updateDialogueText(winText, 999.0f);
         isActive = false;
+
+        StartCoroutine(delayedCredits());
+    }
+
+    IEnumerator delayedCredits()
+    {
+        yield return new WaitForSeconds(2);
+        creditsCanvas.gameObject.SetActive(true);
+        creditsCanvas.GetComponent<ScrollCredits>().isActive = true;
     }
 
     private void OnDestroy()
