@@ -19,8 +19,9 @@ public class EnemyShooter : EnemyPatrol
         Vector2 playerPosition = PlayerChain.Instance.transform.position;
         Vector2 position = this.transform.position;
 
-        float distanceToPlayer = Mathf.Abs(playerPosition.x - position.x);
-        if (distanceToPlayer < shootingRange)
+        float distanceXToPlayer = Mathf.Abs(playerPosition.x - position.x);
+        float distanceYToPlayer = Mathf.Abs(playerPosition.y - position.y);
+        if (distanceXToPlayer < shootingRange && distanceYToPlayer < shootingRange)
         {
             if (!currentlyShooting)
             {
@@ -37,16 +38,18 @@ public class EnemyShooter : EnemyPatrol
         Vector2 playerPosition = PlayerChain.Instance.transform.position;
         Vector2 position = this.transform.position;
 
-        float distanceToPlayer = Mathf.Abs(playerPosition.x - position.x);
+        float distanceXToPlayer = Mathf.Abs(playerPosition.x - position.x);
+        float distanceYToPlayer = Mathf.Abs(playerPosition.y - position.y);
+
         if (PlayerChain.Instance.players.Count > 0 && 
-            distanceToPlayer < visionRange)
+            distanceXToPlayer < visionRange &&
+            distanceYToPlayer < visionRange)
         {
             patrolling = false;
             float direction = (playerPosition.x - position.x) / (Mathf.Abs(playerPosition.x - position.x));
 
             // Stop if you're on a ledge or if you're within shooting range
-
-            if (distanceToPlayer < shootingRange)
+            if (distanceXToPlayer < shootingRange && distanceYToPlayer < shootingRange)
             {
                 return 0;
             }

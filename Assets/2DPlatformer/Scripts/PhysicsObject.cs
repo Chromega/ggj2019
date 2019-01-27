@@ -46,6 +46,7 @@ public class PhysicsObject : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        //Debug.Log(velocity);
         velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
         velocity.x = targetVelocity.x;
 

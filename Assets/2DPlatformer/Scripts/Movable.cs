@@ -37,10 +37,13 @@ public abstract class Movable : PhysicsObject
             if (getJump() && grounded)
             {
                 // initial launch speed
+                //Debug.Log("JUMPING");
                 velocity.y = jumpTakeOffSpeed;
+                //Debug.Log("setting velocity to" + velocity.ToString());
             }
-            else if (Input.GetButtonUp("Jump") && velocity.y > 0)
+            else if (getJump() && velocity.y > 0)
             {
+                //Debug.Log("mid jump");
                 // This handles enabling short vs long jumps
                 velocity.y = velocity.y * Time.deltaTime;
             }
