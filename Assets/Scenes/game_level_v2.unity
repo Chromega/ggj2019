@@ -1278,6 +1278,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1457097403, guid: 7ec4407ca4506f7489e44eaf4f07c87e, type: 3}
+      propertyPath: attackSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: 8e69078210b644960992c3a9fde0e019, type: 3}
+    - target: {fileID: 1457097403, guid: 7ec4407ca4506f7489e44eaf4f07c87e, type: 3}
+      propertyPath: swapSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: acf7fcdccd2ff493a8e0146e4136ef78, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ec4407ca4506f7489e44eaf4f07c87e, type: 3}
 --- !u!1001 &214499109
@@ -8562,6 +8570,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 326667753, guid: bd192ed6d1a030e42aa4d8106a3f80d4, type: 3}
+      propertyPath: swapSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e028953fba9c4bdfbcf2986ee1d9180, type: 3}
+    - target: {fileID: 326667753, guid: bd192ed6d1a030e42aa4d8106a3f80d4, type: 3}
+      propertyPath: attackSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: e1d671a4fd83a4a56b2b7468be4f210b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd192ed6d1a030e42aa4d8106a3f80d4, type: 3}
 --- !u!4 &668764254 stripped
@@ -8654,6 +8670,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c7330ca67545d444bc12c3502d4a5d7, type: 3}
+--- !u!1 &687423256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 687423257}
+  m_Layer: 0
+  m_Name: Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &687423257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687423256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.955225, y: -9.402111, z: 2.992574}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1796780712}
+  m_Father: {fileID: 0}
+  m_RootOrder: 32
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &689667682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10115,6 +10162,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1019450215, guid: 1c65063ddbd25e149b4cabeabb316aca, type: 3}
+      propertyPath: swapSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: 560d1cb022f524326819e0bb17207724, type: 3}
+    - target: {fileID: 1019450215, guid: 1c65063ddbd25e149b4cabeabb316aca, type: 3}
+      propertyPath: attackSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: 730610a6385b041fb9daa8554990114e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c65063ddbd25e149b4cabeabb316aca, type: 3}
 --- !u!1001 &996383051
@@ -14567,7 +14622,7 @@ GameObject:
   - component: {fileID: 1796780712}
   - component: {fileID: 1796780711}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: BackgroundMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14585,7 +14640,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d72607f5b3d4b47db81a6e67dcf4bc3d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.194
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -14676,12 +14731,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796780710}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.955225, y: -9.402111, z: 2.992574}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_Father: {fileID: 687423257}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1806101542 stripped
 Transform:

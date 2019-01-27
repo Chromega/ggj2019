@@ -15,6 +15,9 @@ public class PlayerController : Movable
     private int direction = 1; // 1 = right, -1 = left
     public Transform weaponSpawnPoint;
 
+    public AudioClip attackSoundEffect;
+    public AudioClip swapSoundEffect;
+
     Castable currentSustainedCast = null;
     
     public enum State
@@ -142,7 +145,9 @@ public class PlayerController : Movable
 
     IEnumerator Cast()
     {
+        // Attack animation and sound
         animator.SetTrigger("attack");
+        AudioSource.PlayClipAtPoint(attackSoundEffect, new Vector3(0, 0, 0));
         if (weaponPrefab.GetCastTime() > 0)
             yield return new WaitForSeconds(weaponPrefab.GetCastTime());
 
@@ -194,6 +199,8 @@ public class PlayerController : Movable
     {
         collider2D.enabled = true;
         state = State.Active;
+
+        AudioSource.PlayClipAtPoint(swapSoundEffect, new Vector3(0, 0, 0));
     }
 
     public void Deactivate()
