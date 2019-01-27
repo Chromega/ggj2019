@@ -10,6 +10,7 @@ public class Healthable : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     private Animator animator;
     private Movable movable;
+    public bool invincible = false;
 
     // Events
     // FIXME (seanyliu): make this non-static. Currently all Healthables fire this
@@ -34,6 +35,8 @@ public class Healthable : MonoBehaviour
 
     public void TakeDamage(int damage, GameObject g)
     {
+        if (invincible)
+            return;
         health -= damage;
 
         // Flash red on the sprite for damage taken

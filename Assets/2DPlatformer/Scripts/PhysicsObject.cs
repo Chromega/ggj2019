@@ -30,7 +30,7 @@ public class PhysicsObject : MonoBehaviour
     {
         contactFilter.useTriggers = false;
         //contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
-        contactFilter.SetLayerMask((int)PhysicsUtl.LayerMasksBitmasks.Default);
+        contactFilter.SetLayerMask((int)PhysicsUtl.LayerMasksBitmasks.Default | (int)PhysicsUtl.LayerMasksBitmasks.IgnorePlayer);
         contactFilter.useLayerMask = true;
     }
 
@@ -77,7 +77,8 @@ public class PhysicsObject : MonoBehaviour
             hitBufferList.Clear();
             for (int i = 0; i < count; i++)
             {
-                if (hitBuffer[i].collider.gameObject.layer == (int)PhysicsUtl.LayerMasks.Default)
+                if (hitBuffer[i].collider.gameObject.layer == (int)PhysicsUtl.LayerMasks.Default ||
+                    hitBuffer[i].collider.gameObject.layer == (int)PhysicsUtl.LayerMasks.IgnorePlayer)
                     hitBufferList.Add(hitBuffer[i]);
             }
 

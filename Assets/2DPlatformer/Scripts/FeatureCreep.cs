@@ -6,6 +6,11 @@ public class FeatureCreep : MonoBehaviour
 {
     public SpriteRenderer shell;
     public SpriteRenderer mainRenderer;
+    public Castable weaponPrefab;
+    public Transform weaponSpawnPointSmall;
+    public Transform weaponSpawnPointBig;
+
+    bool isBackwards = true;
 
     float timer;
 
@@ -21,6 +26,8 @@ public class FeatureCreep : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        StartCoroutine(AttackLoop());
+
         SetState(State.Small);
         yield return new WaitForSeconds(5f);
         SetState(State.Big);
@@ -69,15 +76,48 @@ public class FeatureCreep : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
-            Attack();
+            StartCoroutine(Attack());
+        }*/
+    }
+
+    IEnumerator AttackLoop()
+    {
+        while (true)
+        {
+            if (mainRenderer.isVisible)
+            {
+                StartCoroutine(Attack());
+            }
+            yield return new WaitForSeconds(Random.Range(2f, 3f));
         }
     }
 
-    void Attack()
+    IEnumerator Attack()
     {
         animator.SetTrigger("attack");
+
+        yield return new WaitForSeconds(.5f);
+
+        int weaponDirection = mainRenderer.flipX ? -1 : 1;
+        if (isBackwards) weaponDirection *= -1;
+        Vector3 weaponWorldPosition = state==State.Small?weaponSpawnPointSmall.position:weaponSpawnPointBig.position;
+
+        Vector3 weaponLocalPosition = transform.InverseTransformPoint(weaponWorldPosition);//new Vector3(transform.position.x + weaponDirection * 0.5f, transform.position.y + 0.5f, transform.position.z);
+        if (mainRenderer.flipX) weaponLocalPosition.x *= -1;
+        //if (isBackwards) weaponLocalPosition.x *= -1;
+
+        weaponWorldPosition = transform.TransformPoint(weaponLocalPosition);
+        Castable weapon = Instantiate(weaponPrefab, weaponWorldPosition, Quaternion.identity);
+        //weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
+
+
+        if (weaponPrefab is Bullet)
+        {
+            Bullet bullet = (Bullet)weapon;
+            bullet.direction = weaponDirection;
+        }
     }
 
     private void LateUpdate()
