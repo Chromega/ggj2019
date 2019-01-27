@@ -5,6 +5,7 @@ public class EnemyPatrol : Movable
 {
     public float visionRange = 5; 
     private float direction = -1.0f;
+    protected bool patrolling = true;
 
 
     void Awake()
