@@ -104,6 +104,12 @@ public class GameManager : MonoBehaviour
         updateDialogueText(winText, 999.0f);
         isActive = false;
 
+        StartCoroutine(delayedCredits());
+    }
+
+    IEnumerator delayedCredits()
+    {
+        yield return new WaitForSeconds(2);
         creditsCanvas.gameObject.SetActive(true);
         creditsCanvas.GetComponent<ScrollCredits>().isActive = true;
     }
