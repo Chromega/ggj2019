@@ -7,6 +7,7 @@ public class Monster : Weaponable
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private Movable movable;
+    public AudioClip attackSoundEffect;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,6 +25,10 @@ public class Monster : Weaponable
 
     protected override void finishCollision()
     {
+        if (attackSoundEffect)
+        {
+            AudioSource.PlayClipAtPoint(attackSoundEffect, new Vector3(0, 0, 0));
+        }
         // Bounce back a bit
         //movable.Recoil();
     }
