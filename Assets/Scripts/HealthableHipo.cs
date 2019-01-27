@@ -10,6 +10,7 @@ public class HealthableHipo : Healthable
     public Animator animator;
     public Transform spawnPos;
     bool isBackwards = true;
+    public AudioClip spawnSoundEffect;
 
     // Events
     public static System.Action onDied;
@@ -51,6 +52,7 @@ public class HealthableHipo : Healthable
         GameObject spawnPrefab = spawnPrefabs[Random.Range(0, spawnPrefabs.Length)];
         // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
         spawnedThings.Add(Instantiate(spawnPrefab, weaponWorldPosition, transform.rotation));
+        if (spawnSoundEffect) AudioSource.PlayClipAtPoint(spawnSoundEffect, new Vector3(0, 0, 0), 1f);
     }
     
 

@@ -184,6 +184,7 @@ MonoBehaviour:
   spawnTime: 3
   animator: {fileID: 232593760111678041}
   spawnPos: {fileID: 2950892876194369610}
+  spawnSoundEffect: {fileID: 8300000, guid: 8380c96500de210498407ba7f7b28ebe, type: 3}
 --- !u!95 &232593760111678041
 Animator:
   serializedVersion: 3
@@ -216,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToDeal: 2
+  attackSoundEffect: {fileID: 8300000, guid: c2a4e5c999e0f7e4e83f105fed2ec3a1, type: 3}
 --- !u!114 &7961549935232136485
 MonoBehaviour:
   m_ObjectHideFlags: 0
