@@ -46,7 +46,7 @@ public class Healthable : MonoBehaviour
         GameObject damageMarker = Instantiate(damageMarkerPrefab); 
 
         //damageMarker.transform.SetParent(this.transform);
-        damageMarker.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.8f, -2);
+        damageMarker.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 3.0f, -2);
         damageMarker.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
 
         TextMesh text = damageMarker.GetComponent<TextMesh>();
