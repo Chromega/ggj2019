@@ -31,17 +31,24 @@ public abstract class Movable : PhysicsObject
         } else {
             move.x = this.getHorizontalDirection() * horizontalSpeed;
 
+            // Handle the jump
             if (getJump() && grounded)
             {
+                // initial launch speed
                 velocity.y = jumpTakeOffSpeed;
             }
-            else if (Input.GetButtonUp("Jump"))
+            else if (Input.GetButtonUp("Jump") && velocity.y > 0)
             {
-                if (velocity.y > 0)
-                {
-                    velocity.y = velocity.y * 0.2f;
-                }
+                // This handles enabling short vs long jumps
+                velocity.y = velocity.y * Time.deltaTime;
             }
+            else if (velocity.y < 0)
+            {
+                // Apply greater gravity on the fall for snappier jumps
+                // https://www.youtube.com/watch?v=7KiK0Aqtmzc
+                velocity += Vector2.up * Physics2D.gravity.y * 1.8f * Time.deltaTime;
+            }
+
         }
         targetVelocity = move * maxSpeed;
     }
