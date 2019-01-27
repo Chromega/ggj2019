@@ -138,8 +138,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.39}
-  m_Size: {x: 0.74, y: 2.75}
+  m_Offset: {x: 0, y: 1.32}
+  m_Size: {x: 0.74, y: 2.57}
   m_Direction: 0
 --- !u!114 &569515363
 MonoBehaviour:
@@ -168,12 +168,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
-  gravityModifier: 2
+  gravityModifier: 3
   spriteRenderer: {fileID: 569515362}
   animator: {fileID: 569515361}
   collider2D: {fileID: 569515360}
-  maxSpeed: 6
-  jumpTakeOffSpeed: 7
+  maxSpeed: 5
+  jumpTakeOffSpeed: 18
   horizontalSpeed: 1
   recoilTakeoffSpeed: 0.8
   queueOrder: 0
