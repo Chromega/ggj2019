@@ -1278,14 +1278,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1457097403, guid: 7ec4407ca4506f7489e44eaf4f07c87e, type: 3}
-      propertyPath: attackSoundEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 8e69078210b644960992c3a9fde0e019, type: 3}
-    - target: {fileID: 1457097403, guid: 7ec4407ca4506f7489e44eaf4f07c87e, type: 3}
-      propertyPath: swapSoundEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: acf7fcdccd2ff493a8e0146e4136ef78, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ec4407ca4506f7489e44eaf4f07c87e, type: 3}
 --- !u!1001 &214499109
@@ -8580,14 +8572,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 326667753, guid: bd192ed6d1a030e42aa4d8106a3f80d4, type: 3}
-      propertyPath: swapSoundEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 9e028953fba9c4bdfbcf2986ee1d9180, type: 3}
-    - target: {fileID: 326667753, guid: bd192ed6d1a030e42aa4d8106a3f80d4, type: 3}
-      propertyPath: attackSoundEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: e1d671a4fd83a4a56b2b7468be4f210b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd192ed6d1a030e42aa4d8106a3f80d4, type: 3}
 --- !u!4 &668764254 stripped
@@ -10172,14 +10156,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1019450215, guid: 1c65063ddbd25e149b4cabeabb316aca, type: 3}
-      propertyPath: swapSoundEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 560d1cb022f524326819e0bb17207724, type: 3}
-    - target: {fileID: 1019450215, guid: 1c65063ddbd25e149b4cabeabb316aca, type: 3}
-      propertyPath: attackSoundEffect
-      value: 
-      objectReference: {fileID: 8300000, guid: 730610a6385b041fb9daa8554990114e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c65063ddbd25e149b4cabeabb316aca, type: 3}
 --- !u!1001 &996383051
@@ -10534,7 +10510,7 @@ PrefabInstance:
     - target: {fileID: 1573150240457601665, guid: 7c8a142dadb4b0b4995576ea254a563c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.29
+      value: 20.29
       objectReference: {fileID: 0}
     - target: {fileID: 1573150240457601665, guid: 7c8a142dadb4b0b4995576ea254a563c,
         type: 3}
@@ -13132,7 +13108,7 @@ PrefabInstance:
     - target: {fileID: 1573150240457601665, guid: 7c8a142dadb4b0b4995576ea254a563c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.57
+      value: -14.57
       objectReference: {fileID: 0}
     - target: {fileID: 1573150240457601665, guid: 7c8a142dadb4b0b4995576ea254a563c,
         type: 3}
@@ -15384,7 +15360,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987232265}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d54d04f6be5b1451997a56bc741d8560, type: 3}
   m_Name: 
@@ -15398,6 +15374,29 @@ MonoBehaviour:
   jumpTakeOffSpeed: 3
   horizontalSpeed: 0.8
   recoilTakeoffSpeed: 0.8
+  isBackwards: 1
+  visionRange: 5
+--- !u!114 &1987232275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987232265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1479c9e20c14d13869fb6a5f8d9562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minGroundNormalY: 0.65
+  gravityModifier: 1
+  spriteRenderer: {fileID: 0}
+  animator: {fileID: 0}
+  collider2D: {fileID: 1987232271}
+  maxSpeed: 7
+  jumpTakeOffSpeed: 3
+  horizontalSpeed: 0.8
+  recoilTakeoffSpeed: 3
   isBackwards: 1
   visionRange: 5
 --- !u!1 &2049185093

@@ -206,7 +206,10 @@ MonoBehaviour:
   jumpTakeOffSpeed: 19
   horizontalSpeed: 1.5
   recoilTakeoffSpeed: 0.8
+  isBackwards: 0
   queueOrder: 0
   weaponPrefab: {fileID: 4711287966232186240, guid: d7849b3edb5bcd440ae11ee9b5102ea9,
     type: 3}
   weaponSpawnPoint: {fileID: 1145754028}
+  attackSoundEffect: {fileID: 8300000, guid: 8e69078210b644960992c3a9fde0e019, type: 3}
+  swapSoundEffect: {fileID: 8300000, guid: acf7fcdccd2ff493a8e0146e4136ef78, type: 3}
