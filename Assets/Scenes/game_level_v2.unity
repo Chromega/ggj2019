@@ -16555,7 +16555,7 @@ GameObject:
   - component: {fileID: 4030625910116505}
   - component: {fileID: 212948914002340235}
   - component: {fileID: 2116358599}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BackgroundGradient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
