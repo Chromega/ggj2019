@@ -119,12 +119,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
-  gravityModifier: 3
+  gravityModifier: 6
   spriteRenderer: {fileID: 3312341946411787757}
   animator: {fileID: 993618655}
   collider2D: {fileID: 538472031}
   maxSpeed: 8
-  jumpTakeOffSpeed: 14
+  jumpTakeOffSpeed: 18
   horizontalSpeed: 1.2
   recoilTakeoffSpeed: 0.8
   isBackwards: 0
