@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PlayerController : Movable
 {
     public int queueOrder;
-    public Weaponable weaponPrefab;
+    public Castable weaponPrefab;
 
     Vector3 lastExactPathPosition;
     Vector3 exactPathPosition;
@@ -13,6 +13,8 @@ public class PlayerController : Movable
     bool isStill;
     private int direction = 1; // 1 = right, -1 = left
     public Transform weaponSpawnPoint;
+
+    Castable currentSustainedCast = null;
     
     public enum State
     {
@@ -41,6 +43,12 @@ public class PlayerController : Movable
     protected override float getHorizontalDirection()
     {
         float horizontal = Input.GetAxis("Horizontal");
+
+        //lame jam code
+        if (currentSustainedCast && currentSustainedCast is Shield)
+        {
+            horizontal = 0;
+        }
         if (horizontal > 0)
         {
             direction = 1;
@@ -74,7 +82,7 @@ public class PlayerController : Movable
 
         UpdateAnimationProperties();
         
-        if (state == State.Active && Input.GetButtonUp("Fire1") && weaponPrefab)
+        if (state == State.Active && Input.GetButtonDown("Fire1") && weaponPrefab)
         {
             int weaponDirection = spriteRenderer.flipX ? -1 : 1;
             Vector3 weaponWorldPosition = weaponSpawnPoint.position;
@@ -83,14 +91,26 @@ public class PlayerController : Movable
             if (spriteRenderer.flipX)
                 weaponLocalPosition.x *= -1;
             weaponWorldPosition = transform.TransformPoint(weaponLocalPosition);
-            Weaponable weapon = Instantiate(weaponPrefab, weaponWorldPosition, Quaternion.identity);
-            weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
+            Castable weapon = Instantiate(weaponPrefab, weaponWorldPosition, Quaternion.identity);
+            //weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
+
+            if (weapon.GetCastType()== Castable.CastType.Sustained)
+            {
+                currentSustainedCast = weapon;
+            }
 
             if (weaponPrefab is Bullet)
             {
                 Bullet bullet = (Bullet)weapon;
                 bullet.direction = weaponDirection;
             }
+
+            weapon.StartCast(this);
+        }
+        if (Input.GetButtonUp("Fire1") && currentSustainedCast)
+        {
+            currentSustainedCast.EndCast();
+            currentSustainedCast = null;
         }
 
         if (state == State.Following)
@@ -162,6 +182,12 @@ public class PlayerController : Movable
     {
         collider2D.enabled = false;
         state = State.Following;
+
+        if (currentSustainedCast)
+        {
+            currentSustainedCast.EndCast();
+            currentSustainedCast = null;
+        }
     }
 
     public void SetPosition(Vector3 pos, float parentFlipSign)

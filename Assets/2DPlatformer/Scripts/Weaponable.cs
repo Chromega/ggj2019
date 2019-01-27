@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weaponable : MonoBehaviour
+public abstract class Weaponable : Castable
 {
     public int damageToDeal = 1;
 
@@ -37,5 +37,10 @@ public abstract class Weaponable : MonoBehaviour
             healthable.TakeDamage(damageToDeal, gameObject);
             finishCollision();
         }
+    }
+
+    public override CastType GetCastType()
+    {
+        return CastType.Instant;
     }
 }
