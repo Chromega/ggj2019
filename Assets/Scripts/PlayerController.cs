@@ -93,6 +93,7 @@ public class PlayerController : Movable
         if (Input.GetButtonUp("Fire1") && currentSustainedCast)
         {
             currentSustainedCast.EndCast();
+            animator.SetBool("shield", false);
             currentSustainedCast = null;
         }
 
@@ -167,6 +168,7 @@ public class PlayerController : Movable
         if (weapon.GetCastType() == Castable.CastType.Sustained)
         {
             currentSustainedCast = weapon;
+            animator.SetBool("shield", true);
         }
 
         if (weaponPrefab is Bullet)
