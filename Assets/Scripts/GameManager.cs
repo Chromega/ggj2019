@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         Bitcoin.addFundsEvent += Bitcoin_AddFundsEvent;
 
         updateFundsLeft();
+        Application.targetFrameRate = 60;
     }
 
     void Bitcoin_AddFundsEvent()

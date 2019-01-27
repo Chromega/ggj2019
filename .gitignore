@@ -3,6 +3,7 @@ Temp/
 obj/
 Builds/
 Build/
+BuildWebPlayer/
 *.csproj
 *.sln
 *.suo
