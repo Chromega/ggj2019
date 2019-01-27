@@ -29,7 +29,8 @@ public class PhysicsObject : MonoBehaviour
     void Start()
     {
         contactFilter.useTriggers = false;
-        contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
+        //contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
+        contactFilter.SetLayerMask((int)PhysicsUtl.LayerMasksBitmasks.Default);
         contactFilter.useLayerMask = true;
     }
 
@@ -62,6 +63,7 @@ public class PhysicsObject : MonoBehaviour
 
         move = Vector2.up * deltaPosition.y;
 
+
         Movement(move, true);
     }
 
@@ -75,7 +77,8 @@ public class PhysicsObject : MonoBehaviour
             hitBufferList.Clear();
             for (int i = 0; i < count; i++)
             {
-                hitBufferList.Add(hitBuffer[i]);
+                if (hitBuffer[i].collider.gameObject.layer == (int)PhysicsUtl.LayerMasks.Default)
+                    hitBufferList.Add(hitBuffer[i]);
             }
 
             for (int i = 0; i < hitBufferList.Count; i++)
