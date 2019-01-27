@@ -178,6 +178,7 @@ MonoBehaviour:
   health: 10
   spriteRenderer: {fileID: 0}
   invincible: 0
+  deathSoundEffect: {fileID: 8300000, guid: 5a8de9ec838ed284bb4e49cd4620a3ca, type: 3}
   spawnPrefabs:
   - {fileID: 1222806087177142, guid: 6ccf0ce9da7c5894492f1dd3ccc8c9ee, type: 3}
   - {fileID: 4763195633204100054, guid: 64f1d1ee71bf8844086cd302a18b8f79, type: 3}

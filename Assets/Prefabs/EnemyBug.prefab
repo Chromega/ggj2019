@@ -203,3 +203,4 @@ MonoBehaviour:
   health: 10
   spriteRenderer: {fileID: 0}
   invincible: 0
+  deathSoundEffect: {fileID: 8300000, guid: 5a8de9ec838ed284bb4e49cd4620a3ca, type: 3}
