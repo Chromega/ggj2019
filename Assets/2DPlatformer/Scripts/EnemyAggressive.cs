@@ -23,7 +23,7 @@ public class EnemyAggressive : EnemyPatrol
 
         if (PlayerChain.Instance.players.Count > 0 &&
             distanceXToPlayer < visionRange &&
-            distanceYToPlayer < visionRange)
+            distanceYToPlayer < 1)
         {
             patrolling = false; 
             float direction = (playerPosition.x - position.x) / (Mathf.Abs(playerPosition.x - position.x));
