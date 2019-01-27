@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class EnemyPatrol : Movable
 {
@@ -12,6 +13,11 @@ public class EnemyPatrol : Movable
             spriteRenderer = GetComponent<SpriteRenderer>();
         if (!animator)
             animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(MoveLoop());
     }
 
     protected override bool getJump()
@@ -34,10 +40,21 @@ public class EnemyPatrol : Movable
         }
     }
 
+    IEnumerator MoveLoop()
+    {
+        while (true)
+        {
+            direction = 0;
+            yield return new WaitForSeconds(Random.Range(.2f, .5f));
+            direction = Random.Range(0f,1f) > .5f ? -1 : 1;
+            yield return new WaitForSeconds(Random.Range(1f, 1.5f));
+        }
+    }
+
     protected override float getHorizontalDirection()
     {
         // Patrol in a random direction
-        flipRandomDirection(); 
+        //flipRandomDirection(); 
 
         // Stop if you're on a ledge
         bool leftGround;
