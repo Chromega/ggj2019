@@ -73,7 +73,10 @@ public abstract class Movable : PhysicsObject
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
-        animator.SetBool("grounded", grounded);
-        animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+        if (animator.runtimeAnimatorController)
+        {
+            animator.SetBool("grounded", grounded);
+            animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+        }
     }
 }
