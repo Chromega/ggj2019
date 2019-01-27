@@ -42,11 +42,12 @@ public class EnemyPatrol : Movable
         {
             direction = (playerPosition.x - position.x) / (Mathf.Abs(playerPosition.x - position.x));
         }
+        //direction = 0;
 
         bool leftGround;
         bool rightGround;
         PhysicsUtl.LedgeCheck(collider2D, out leftGround, out rightGround);
-
+        //Debug.Log(leftGround + " " + rightGround);
 
         float directionToReturn = direction;
         if (direction < 0 && !leftGround)
