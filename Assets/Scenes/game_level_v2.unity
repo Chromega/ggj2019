@@ -15365,7 +15365,7 @@ MonoBehaviour:
   jumpTakeOffSpeed: 3
   horizontalSpeed: 0.8
   recoilTakeoffSpeed: 0.8
-  isBackwards: 0
+  isBackwards: 1
   visionRange: 5
 --- !u!1 &2049185093
 GameObject:
