@@ -104,6 +104,7 @@ public class PlayerController : Movable
                 Bullet bullet = (Bullet)weapon;
                 bullet.direction = weaponDirection;
             }
+            animator.SetTrigger("attack");
 
             weapon.StartCast(this);
         }
@@ -148,7 +149,15 @@ public class PlayerController : Movable
                     direction = -1;
                 }
             }
+        }
 
+        if (Mathf.Abs(velocity.x) > .01f)
+        {
+            animator.SetBool("moving", true);
+        }
+        else
+        {
+            animator.SetBool("moving", false);
         }
     }
 
