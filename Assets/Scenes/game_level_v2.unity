@@ -8346,12 +8346,12 @@ PrefabInstance:
     - target: {fileID: 1484351331557862275, guid: 4d5e2a4a18a5145fe858c5687fe816ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.13
+      value: 26.08
       objectReference: {fileID: 0}
     - target: {fileID: 1484351331557862275, guid: 4d5e2a4a18a5145fe858c5687fe816ea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 51.54
+      value: 49.74
       objectReference: {fileID: 0}
     - target: {fileID: 1484351331557862275, guid: 4d5e2a4a18a5145fe858c5687fe816ea,
         type: 3}
@@ -8396,21 +8396,6 @@ PrefabInstance:
     - target: {fileID: 1484351331557862275, guid: 4d5e2a4a18a5145fe858c5687fe816ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484351331557862275, guid: 4d5e2a4a18a5145fe858c5687fe816ea,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7961549935232136485, guid: 4d5e2a4a18a5145fe858c5687fe816ea,
-        type: 3}
-      propertyPath: visionRange
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7961549935232136485, guid: 4d5e2a4a18a5145fe858c5687fe816ea,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -17049,41 +17034,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 972312188}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1962336607 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4612497159298289734, guid: 4d5e2a4a18a5145fe858c5687fe816ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 522085318}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1962336613 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 6697399516036048654, guid: 4d5e2a4a18a5145fe858c5687fe816ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 522085318}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1962336616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962336607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d54d04f6be5b1451997a56bc741d8560, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minGroundNormalY: 0.65
-  gravityModifier: 1
-  spriteRenderer: {fileID: 0}
-  animator: {fileID: 0}
-  collider2D: {fileID: 1962336613}
-  maxSpeed: 7
-  jumpTakeOffSpeed: 3
-  horizontalSpeed: 0.8
-  recoilTakeoffSpeed: 0.8
-  isBackwards: 1
-  visionRange: 15
 --- !u!4 &1977436875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5747306736745505811, guid: 282eb036290bffb43b75d9c27ad88d20,
