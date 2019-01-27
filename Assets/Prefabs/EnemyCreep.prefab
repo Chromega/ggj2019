@@ -155,7 +155,7 @@ MonoBehaviour:
   jumpTakeOffSpeed: 3
   horizontalSpeed: 0.6
   recoilTakeoffSpeed: 3
-  isBackwards: 0
+  isBackwards: 1
   visionRange: 10
 --- !u!95 &9081808757738424609
 Animator:
