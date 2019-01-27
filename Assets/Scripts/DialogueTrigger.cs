@@ -13,6 +13,9 @@ public class DialogueTrigger : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (hasTriggered)
+            return;
+        hasTriggered = true;
         if (DialogueController.Instance)
         {
             if (other.gameObject.layer == (int)PhysicsUtl.LayerMasks.Player)
