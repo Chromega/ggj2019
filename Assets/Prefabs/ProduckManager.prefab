@@ -185,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   spriteRenderer: {fileID: 0}
+  invincible: 0
 --- !u!114 &1457097403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,5 +212,5 @@ MonoBehaviour:
   weaponPrefab: {fileID: 4711287966232186240, guid: d7849b3edb5bcd440ae11ee9b5102ea9,
     type: 3}
   weaponSpawnPoint: {fileID: 1145754028}
-  attackSoundEffect: {fileID: 8300000, guid: 8e69078210b644960992c3a9fde0e019, type: 3}
-  swapSoundEffect: {fileID: 8300000, guid: acf7fcdccd2ff493a8e0146e4136ef78, type: 3}
+  attackSoundEffect: {fileID: 8300000, guid: d407569ca5ad5234f802c5ad455a1da3, type: 3}
+  swapSoundEffect: {fileID: 8300000, guid: 6b6754b011250964a86a6a2ebe14f507, type: 3}
