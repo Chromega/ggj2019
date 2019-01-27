@@ -12,6 +12,7 @@ public class PlayerController : Movable
     float settleAmount;
     bool isStill;
     private int direction = 1; // 1 = right, -1 = left
+    public Transform weaponSpawnPoint;
     
     public enum State
     {
@@ -76,8 +77,11 @@ public class PlayerController : Movable
         if (state == State.Active && Input.GetButtonUp("Fire1") && weaponPrefab)
         {
             int weaponDirection = spriteRenderer.flipX ? -1 : 1;
-            Vector3 weaponPosition = new Vector3(transform.position.x + weaponDirection * 0.5f, transform.position.y + 0.5f, transform.position.z);
-            Weaponable weapon = Instantiate(weaponPrefab, weaponPosition, Quaternion.identity);
+            Vector3 weaponLocalPosition = weaponSpawnPoint.localPosition;//new Vector3(transform.position.x + weaponDirection * 0.5f, transform.position.y + 0.5f, transform.position.z);
+            if (spriteRenderer.flipX)
+                weaponLocalPosition.x *= -1;
+            Vector3 weaponWorldPosition = transform.TransformPoint(weaponLocalPosition);
+            Weaponable weapon = Instantiate(weaponPrefab, weaponWorldPosition, Quaternion.identity);
             weapon.gameObject.layer = LayerMask.NameToLayer("IgnorePlayer");
 
             if (weaponPrefab is Bullet)

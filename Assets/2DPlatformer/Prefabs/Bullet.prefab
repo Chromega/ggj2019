@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1604023242}
   - component: {fileID: 1604023241}
   - component: {fileID: 1109546692411712594}
-  m_Layer: 9
+  - component: {fileID: 265702160410247155}
+  m_Layer: 19
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: -888973317
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e5ddad8c305244eb69dc2c9c20bd2a2e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3d65607547d63db459fd0b21bc9424bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,14 +100,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.28, y: 0.13}
+    oldSize: {x: 1, y: 0.5}
     newSize: {x: 0.28, y: 0.13}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.1}
+  m_Size: {x: 1.45, y: 0.8}
   m_EdgeRadius: 0
 --- !u!50 &1604023241
 Rigidbody2D:
@@ -142,5 +143,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToDeal: 1
-  velocity: {x: 5, y: 0, z: 0}
+  velocity: {x: 15, y: 0, z: 0}
   direction: 1
+--- !u!95 &265702160410247155
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604023239}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 14804da0b801fcd4895ae017a1495995, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
