@@ -146,13 +146,20 @@ public class PlayerController : Movable
 
         if (animator.runtimeAnimatorController)
         {
-            if (Mathf.Abs(velocity.x) > .01f)
-            {
+            if (Mathf.Abs(velocity.x) > Mathf.Epsilon) {
                 animator.SetBool("moving", true);
+            } else
+            {
+                animator.SetBool("moving", false);
+            }
+
+            if (Mathf.Abs(velocity.y) > Mathf.Epsilon)
+            {
+                animator.SetBool("jumping", true);
             }
             else
             {
-                animator.SetBool("moving", false);
+                animator.SetBool("jumping", false);
             }
         }
     }
