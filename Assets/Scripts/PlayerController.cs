@@ -44,6 +44,11 @@ public class PlayerController : Movable
         return Input.GetButtonDown("Jump");
     }
 
+    protected override bool getJumpButtonHold()
+    {
+        return Input.GetButton("Jump");
+    }
+
     protected override float getHorizontalDirection()
     {
         float horizontal = Input.GetAxis("Horizontal");

@@ -8,52 +8,56 @@ public abstract class Movable : PhysicsObject
     new public Collider2D collider2D;
 
     public float maxSpeed = 7;
-    public float jumpTakeOffSpeed = 3;
-    public float horizontalSpeed = 0.8f;
+    public float jumpTakeOffSpeed = 22;
+    public float horizontalSpeed = 1.25f;
     public float recoilTakeoffSpeed = 0.8f;
+    public float fasterFallMultiplier = 3.0f;
+    public float shortJumpMultiplier = 15.0f;
 
     private bool isRecoil = false;
     private int recoilDirection;
 
     public bool isBackwards;
 
+    // These are set by either the AI or a key press
     protected abstract float getHorizontalDirection();
-    protected abstract bool getJump(); 
+    protected abstract bool getJump();
+    protected abstract bool getJumpButtonHold();
 
     protected override void ComputeVelocity()
     {
+        // Apply greater gravity on the fall for snappier jumps
+        // See https://www.youtube.com/watch?v=7KiK0Aqtmzc
+
         Vector2 move = Vector2.zero;
 
         if (isRecoil)
         {
             int direction = recoilDirection;
-
             velocity.y = recoilTakeoffSpeed;
             move.x = (float)(direction);
-        } else {
+        }
+        else
+        {
+            // Handle horizontal
             move.x = this.getHorizontalDirection() * horizontalSpeed;
 
-            // Handle the jump
+            // Handle jump
             if (getJump() && grounded)
             {
                 // initial launch speed
-                //Debug.Log("JUMPING");
                 velocity.y = jumpTakeOffSpeed;
-                //Debug.Log("setting velocity to" + velocity.ToString());
-            }
-            else if (getJump() && velocity.y > 0)
-            {
-                //Debug.Log("mid jump");
-                // This handles enabling short vs long jumps
-                velocity.y = velocity.y * Time.deltaTime;
             }
             else if (velocity.y < 0)
             {
-                // Apply greater gravity on the fall for snappier jumps
-                // https://www.youtube.com/watch?v=7KiK0Aqtmzc
-                velocity += Vector2.up * Physics2D.gravity.y * 1.8f * Time.deltaTime;
+                // Faster fall for better feeling physics
+                velocity += Vector2.up * Physics2D.gravity.y * fasterFallMultiplier * Time.deltaTime;
             }
-
+            else if (velocity.y > 0 && !getJumpButtonHold())
+            {
+                // Enable a short jump by accelerating the down
+                velocity += Vector2.up * Physics2D.gravity.y * shortJumpMultiplier * Time.deltaTime;
+            }
         }
         targetVelocity = move * maxSpeed;
     }

@@ -184,14 +184,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
-  gravityModifier: 3
+  gravityModifier: 6
   spriteRenderer: {fileID: 1065099943}
   animator: {fileID: 1065099942}
   collider2D: {fileID: 1417872067681695531}
-  maxSpeed: 5
-  jumpTakeOffSpeed: 14
-  horizontalSpeed: 1.5
+  maxSpeed: 7
+  jumpTakeOffSpeed: 22
+  horizontalSpeed: 1.25
   recoilTakeoffSpeed: 0.8
+  fasterFallMultiplier: 3
+  shortJumpMultiplier: 15
   isBackwards: 0
   queueOrder: 0
   weaponPrefab: {fileID: 4711287966232186240, guid: d7849b3edb5bcd440ae11ee9b5102ea9,

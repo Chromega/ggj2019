@@ -26,6 +26,11 @@ public class EnemyPatrol : Movable
         return false;
     }
 
+    protected override bool getJumpButtonHold()
+    {
+        return false;
+    }
+
     protected override void Update()
     {
         base.Update();
