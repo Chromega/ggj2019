@@ -3195,11 +3195,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1864869243, guid: 326e5a8dcb04e48efa56d203a016724c, type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 1864869243, guid: 326e5a8dcb04e48efa56d203a016724c, type: 3}
       propertyPath: jumpTakeOffSpeed
-      value: 22
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1864869243, guid: 326e5a8dcb04e48efa56d203a016724c, type: 3}
       propertyPath: gravityModifier
