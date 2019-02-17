@@ -69,28 +69,41 @@ public abstract class Movable : PhysicsObject
     {
         yield return new WaitForSeconds(.1f);
         isRecoil = false; 
-
-        // FIXME(amber): Set player direction back to the original at the end of the recoil. 
-        // FIXED(seanyliu): velocity no longer sets the player's direction
     }
 
 
     protected virtual void UpdateAnimationProperties()
     {
-        bool flipSprite = ((spriteRenderer.flipX^isBackwards) ? (velocity.x > 0.01f) : (velocity.x < -0.01f));
-        if (gameObject.GetComponent<PlayerController>()) {
-            // for PlayerController, set the direction based on GetDirection() which is set by keyboard
-            spriteRenderer.flipX = (gameObject.GetComponent<PlayerController>().GetDirection() < 0);
-        } else if (flipSprite && !isRecoil)
+        // Set the correct direction of the sprite
+        if (!isRecoil)
         {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            if (velocity.x < -0.01f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
+            else if (velocity.x > 0.01f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
         }
+        else
+        {
+            if (velocity.x < -0.01f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if (velocity.x > 0.01f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
+        }
+
         if (animator.runtimeAnimatorController)
         {
             animator.logWarnings = false;
             animator.SetBool("grounded", grounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
-            animator.SetBool("moving", Mathf.Abs(velocity.x)>.01f);
+            animator.SetBool("moving", Mathf.Abs(velocity.x) > .01f);
         }
     }
 }
