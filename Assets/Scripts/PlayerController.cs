@@ -46,7 +46,12 @@ public class PlayerController : Movable
 
     protected override float getHorizontalDirection()
     {
-        float horizontal = Input.GetAxis("Horizontal");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        if (getJump())
+        {
+            horizontal = Input.GetAxis("Horizontal");
+        }
+
 
         //lame jam code
         if (currentSustainedCast && currentSustainedCast is Shield)
