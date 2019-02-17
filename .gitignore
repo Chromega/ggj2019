@@ -8,3 +8,4 @@ BuildWebPlayer/
 *.sln
 *.suo
 *.vs
+.DS_Store
