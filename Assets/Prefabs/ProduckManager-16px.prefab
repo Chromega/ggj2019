@@ -187,7 +187,7 @@ MonoBehaviour:
   gravityModifier: 3
   spriteRenderer: {fileID: 1065099943}
   animator: {fileID: 1065099942}
-  collider2D: {fileID: 1065099940, guid: 326e5a8dcb04e48efa56d203a016724c, type: 3}
+  collider2D: {fileID: 1417872067681695531}
   maxSpeed: 5
   jumpTakeOffSpeed: 14
   horizontalSpeed: 1.5
