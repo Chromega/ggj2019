@@ -52,11 +52,6 @@ public class PlayerController : Movable
     protected override float getHorizontalDirection()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
-        if (Mathf.Abs(velocity.y) > Mathf.Epsilon) // if in the middle of a jump
-        {
-            horizontal = Input.GetAxis("Horizontal");
-        }
-
 
         //lame jam code
         if (currentSustainedCast && currentSustainedCast is Shield)
