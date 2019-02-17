@@ -95,7 +95,7 @@ public class PlayerController : Movable
         }
 
         UpdateAnimationProperties();
-        
+
         if (state == State.Active && Input.GetButtonDown("Fire1") && weaponPrefab)
         {
             StartCoroutine(Cast());
@@ -129,7 +129,8 @@ public class PlayerController : Movable
             {
                 settleAmount = Mathf.MoveTowards(settleAmount, 1f, 2f * Time.deltaTime);
             }
-            else {
+            else
+            {
                 settleAmount = Mathf.MoveTowards(settleAmount, 0f, 2f * Time.deltaTime);
 
                 // Set the sprite direction
@@ -146,19 +147,28 @@ public class PlayerController : Movable
 
         if (animator.runtimeAnimatorController)
         {
-            if (Mathf.Abs(velocity.x) > Mathf.Epsilon) {
+            if (Mathf.Abs(velocity.x) > Mathf.Epsilon)
+            {
                 animator.SetBool("moving", true);
-            } else
+            }
+            else
             {
                 animator.SetBool("moving", false);
             }
 
-            if (Mathf.Abs(velocity.y) > Mathf.Epsilon)
+            if (velocity.y > Mathf.Epsilon)
             {
                 animator.SetBool("jumping", true);
+                animator.SetBool("falling", false);
+            }
+            else if (velocity.y < -Mathf.Epsilon)
+            {
+                animator.SetBool("falling", true);
+                animator.SetBool("jumping", false);
             }
             else
             {
+                animator.SetBool("falling", false);
                 animator.SetBool("jumping", false);
             }
         }
